@@ -1,0 +1,43 @@
+
+.checkout{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.colm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 50vh;
+    max-height: 35rem;
+}
+.colm input{
+    margin-bottom: 1rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    border: solid 1px #7e7e7e;
+}
+.colm h2{
+    color: var(--hayk);
+    font-size: 2rem;
+    margin-bottom: 3rem;
+}
+.right{
+    padding: 1rem;
+    min-height: 20rem;
+    border: solid 0.5px #7e7e7e;
+    width: 35%;
+}
+.rightHeader{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.rightHeader p{
+    color: #3bb77e;
+    font-size: 2rem;
+}
+.rightHeader div{
+    display: flex;
+    align-items: center;
+}
