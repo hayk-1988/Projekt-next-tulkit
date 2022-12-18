@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "../PROJECT-TULKIT/node_modules/.bin/next dev",
-    "build": "../PROJECT-TULKIT/node_modules/.bin/next build",
-    "start": "../PROJECT-TULKIT/node_modules/.bin/next start",
-    "lint": "../PROJECT-TULKIT/node_modules/.bin/next lint"
+    "dev": "./node_modules/.bin/next dev",
+    "build": "./node_modules/.bin/next build",
+    "start": "./node_modules/.bin/next start",
+    "lint": "./node_modules/.bin/next lint"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.1",
