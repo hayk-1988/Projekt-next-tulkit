@@ -45,7 +45,7 @@ const pagination = ({data, page, limit}) => {
                     prods?.map(prod => {
                         return (
                             <Product
-                                key={prod.id}
+                                key={prod.id + Date.now() +'g'}
                                 name={prod.name}
                                 image={prod.image}
                                 price={prod.price}

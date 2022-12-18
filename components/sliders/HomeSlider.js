@@ -27,7 +27,7 @@ export function HomeSlider({chek, radio2, xClas}) {
                                 </p>
                             </div>
                             <div className="radio">
-                                <input className="radio-3" type="radio" name="slider1" checked={true} />
+                                <input className="radio-3" type="radio" name="slider1" defaultChecked={true} />
                                     <input className="radio-4" type="radio" name="slider"  onChange={(e) => {
                                         radio2({
                                             isChek: e.target.checked
@@ -52,12 +52,12 @@ export function HomeSlider({chek, radio2, xClas}) {
                                 </p>
                             </div>
                             <div className="radio">
-                                <input className="radio-1" type="radio" name="slider" checked={false} onChange={(e) => {
+                                <input className="radio-1" type="radio" name="slider" defaultChecked={false} onChange={(e) => {
                                     radio2({
                                         isChek: e.target.checked
                                     })
                                 }}/>
-                                    <input className="radio-2" type="radio" name="slider" checked={chek}/>
+                                    <input className="radio-2" type="radio" name="slider" defaultChecked={chek}/>
                             </div>
                     </div>
                 </div>

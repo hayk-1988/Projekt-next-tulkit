@@ -22,10 +22,6 @@ const checkout = () => {
         }
     })
 
-    console.log(orderData)
-    //https://420.canamaster.net/order/rest/sales/add
-    console.log(cartProducts)
-
     async function order() {
         let body = {
             "status": "new",
@@ -68,7 +64,7 @@ const checkout = () => {
     }
 
     return (
-        <Checkout order={order} cartItems={cartProductAdapter(cartProducts)}/>
+        <Checkout order={order} cartItems={cartProds}/>
     );
 };
 

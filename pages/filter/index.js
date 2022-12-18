@@ -58,7 +58,7 @@ const Index = () => {
                     {
                         categories?.map(elem => {
                             return (
-                                <div key={elem.id} className={'filter__categories'}>
+                                <div key={Math.random() +'fi' + Date.now()} className={'filter__categories'}>
                                     <label name={elem.id}>
                                         <input name={'radio'} type="radio"
                                                id={elem.id} value={elem.source}
@@ -89,7 +89,7 @@ const Index = () => {
                             prods?.map(prod => {
                                 return (
                                     <Product
-                                        key={prod.id}
+                                        key={Math.random() +'f' + Date.now()}
                                         name={prod.name}
                                         image={prod.image}
                                         price={prod.price}

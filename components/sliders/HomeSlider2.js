@@ -1,4 +1,3 @@
-
 import {SliderProduct} from "./SliderProduct";
 import {useState} from "react";
 
@@ -17,30 +16,40 @@ export function HomeSlider2() {
 
 
     const [prods, setProds] = useState([
-        <SliderProduct price={`$28.54`}
-                       oldPrice={'$35.40'}
-                       imgBack={'https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-2-2.jpg'}
-                       imgFront={'https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-2-1.jpg'}/>,
+        <SliderProduct
+            key={Math.random() + 'fidc1' + Date.now()}
+            price={`$28.54`}
+            oldPrice={'$35.40'}
+            imgBack={'https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-2-2.jpg'}
+            imgFront={'https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-2-1.jpg'}/>,
 
-        <SliderProduct price={`$30.54`}
-                       oldPrice={'$37.40'}
-                       imgBack={'https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-3-2.jpg'}
-                       imgFront={'https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-3-1.jpg'}/>,
+        <SliderProduct
+            key={Math.random() + 'fidc2' + Date.now()}
+            price={`$30.54`}
+            oldPrice={'$37.40'}
+            imgBack={'https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-3-2.jpg'}
+            imgFront={'https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-3-1.jpg'}/>,
 
-        <SliderProduct price={`45.54`}
-                       oldPrice={'57.40'}
-                       imgBack={'https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-4-2.jpg'}
-                       imgFront={'https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-4-1.jpg'}/>,
+        <SliderProduct
+            key={Math.random() + 'fidc3' + Date.now()}
+            price={`45.54`}
+            oldPrice={'57.40'}
+            imgBack={'https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-4-2.jpg'}
+            imgFront={'https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-4-1.jpg'}/>,
 
-        <SliderProduct price={`39.54`}
-                       oldPrice={'51.40'}
-                       imgBack={'https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-5-2.jpg'}
-                       imgFront={'https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-5-1.jpg'}/>,
+        <SliderProduct
+            key={Math.random() + 'fidc4' + Date.now()}
+            price={`39.54`}
+            oldPrice={'51.40'}
+            imgBack={'https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-5-2.jpg'}
+            imgFront={'https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-5-1.jpg'}/>,
 
-        <SliderProduct price={`39.54`}
-                       oldPrice={'51.40'}
-                       imgBack={'https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-10-2.jpg'}
-                       imgFront={'https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-10-1.jpg'}/>
+        <SliderProduct
+            key={Math.random() + 'fidc5' + Date.now()}
+            price={`39.54`}
+            oldPrice={'51.40'}
+            imgBack={'https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-10-2.jpg'}
+            imgFront={'https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-10-1.jpg'}/>
 
     ])
 

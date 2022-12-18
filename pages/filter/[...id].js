@@ -22,7 +22,6 @@ export async function getServerSideProps(context) {
     const categories = await getReq('https://420.canamaster.net/api/v1/products/shop/categories/0/23');
     const data = await getReq(`https://420.canamaster.net/api/v1/products/category/new/${categoryId}/${page}/${limit}?filterIds=[]&&attributeIds=[]&&productIds=[]&&parentCategoryId=23&&priceMinMax=[${min},${max}]&&brandIds=[]`);
 
-    console.log(data)
     const minMax = {}
     if (data.minMax[0].min === min || +min === 0) {
         minMax.min = data.minMax[0].min
@@ -125,7 +124,7 @@ const filter = ({data, path, categories, minMax, obj}) => {
                     {
                         categories?.map(elem => {
                             return (
-                                <div key={elem.id} className={'filter__categories'}>
+                                <div  key={Math.random() +'fidc' + Date.now()} className={'filter__categories'}>
                                     <label name={elem.id}>
                                         <input name={'radio'} type="radio"
                                                id={elem.id} value={elem.source}
@@ -151,7 +150,7 @@ const filter = ({data, path, categories, minMax, obj}) => {
                             prods?.map(prod => {
                                 return (
                                     <Product
-                                        key={prod.id}
+                                        key={Math.random() +'fid' + Date.now()}
                                         name={prod.name}
                                         image={prod.image}
                                         price={prod.price}

@@ -62,24 +62,14 @@ const cartIndex = () => {
     let cartProducts = useSelector((state) => state.cartProducts.cartProducts)
     const loading = useSelector((state) => state.cartProducts.status)
 
-    console.log(cartProducts)
 
     const cartProds = cartProductAdapter(cartProducts)
 
-    const orderData = cartProds.map(elem => {
-        return {
-            "quantity": elem.quantity,
-            "productId": elem.id,
-            "product": elem.product
-        }
-    })
-    console.log(orderData)
+
     useEffect(() => {
         dispatch(getCartProducts())
     }, [])
 
-
-//!cartProducts ? undefined :
 
     function deleteHandler(id, cartIds) {
         dispatch(deleteCartProduct(id))
@@ -94,7 +84,7 @@ const cartIndex = () => {
             {loading === 'loading'? cartProds.map(prod => {
                     return (
                         <CartProduct
-                            key={prod.id}
+                            key={prod.id+Date.now()+'b'}
                             name={prod.name}
                             price={prod.price}
                             image={prod.image}

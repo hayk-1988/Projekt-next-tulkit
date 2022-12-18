@@ -36,7 +36,7 @@ const Checkout = ({order, cartItems}) => {
                         cartItems?.map(elem => {
                             return(
                                 <CartProduct
-                                    key={elem.productId}
+                                    key={elem.productId + Date.now()+'a'}
                                     cartId={elem.productId}
                                     price={elem.price}
                                     image={elem.image}

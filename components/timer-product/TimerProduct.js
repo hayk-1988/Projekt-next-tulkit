@@ -42,10 +42,14 @@ export default memo(function TimerProduct({img, price, oldPrice, deadLine}) {
     return (
         <div className="timer-products__img">
             <div className="timer">
-                <div className="timer-time"><span className="time"></span>{time.d}<p>Days</p></div>
-                <div className="timer-time"><span className="time"></span>{time.h}<p>Hours</p></div>
-                <div className="timer-time"><span className="time"></span>{time.m}<p>Mins</p></div>
-                <div className="timer-time"><span className="time"></span>{time.s}<p>Sec</p></div>
+                <div key={Math.random() + 'fidc121' + Date.now()}
+                     className="timer-time"><span className="time"></span>{time.d}<p>Days</p></div>
+                <div key={Math.random() + 'fidc122' + Date.now()}
+                     className="timer-time"><span className="time"></span>{time.h}<p>Hours</p></div>
+                <div key={Math.random() + 'fidc123' + Date.now()}
+                     className="timer-time"><span className="time"></span>{time.m}<p>Mins</p></div>
+                <div key={Math.random() + 'fidc124' + Date.now()}
+                     className="timer-time"><span className="time"></span>{time.s}<p>Sec</p></div>
             </div>
             <img src={img} alt="banner"/>
             <footer>

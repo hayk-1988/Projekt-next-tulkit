@@ -20,7 +20,7 @@ export function HeaderNav() {
                     Deals
                 </p>
 
-                <Link href="/Projekt-next-tulkit/pages">
+                <Link href="/">
                     <p className="nav-tab">Home</p>
                 </Link>
                 <Link href={'/filter'}>

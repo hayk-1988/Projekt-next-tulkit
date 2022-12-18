@@ -76,7 +76,7 @@ export default function products({products, count}) {
                     products?.map(prod => {
                         return (
                             <Product
-                                key={prod.id}
+                                key={prod.id + Date.now()+'h'}
                                 name={prod.name}
                                 image={prod.image}
                                 price={prod.price}

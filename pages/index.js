@@ -29,9 +29,7 @@ export default function Home({data}) {
     dispatch(setPages(Math.floor(data.count / 10)))
     const prods = productAdapter(data)
 
-
     const loading =useSelector((state)=> state.products.status)
-
 
     const [chek, isChek] = useState(false)
     const [className, setClassName] = useState(['show', 'hide'])
@@ -51,7 +49,7 @@ export default function Home({data}) {
                     prods?.map(prod => {
                         return (
                             <Product
-                                key={prod.id}
+                                key={Math.random() +'fidcb' + Date.now()}
                                 name={prod.name}
                                 image={prod.image}
                                 price={prod.price}
