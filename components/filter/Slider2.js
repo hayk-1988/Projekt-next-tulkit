@@ -35,7 +35,7 @@ const Slider2 = ({minVal,maxVal,setMaxVal, setMinVal, minMax}) => {
                        type="range"
                        min={minMax.min}
                        max={minMax.max}
-                       value={maxVal }
+                       value={maxVal}
                        className={`${s[className[1]]} ${s.thumb}`}
                        onChange={(event) => {
                            const value = Math.max(+event.target.value, minVal + 1);

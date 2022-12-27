@@ -1,9 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Product} from "../../components/populiar-product/Product";
 import Link from "next/link";
-import {useDispatch, useSelector} from "react-redux";
 import {productAdapter} from "../../utils/adaptors";
-import {getFilterCategories, getFilterProducts, setCategories} from "../../features/filter/filterSlice";
 import {getReq} from "../../utils/request";
 import {useRouter} from "next/router";
 import Slider2 from "../../components/filter/Slider2";
@@ -19,33 +17,43 @@ export async function getServerSideProps(context) {
         page = 1
         limit = 10
     }
-    const categories = await getReq('https://420.canamaster.net/api/v1/products/shop/categories/0/23');
-    const data = await getReq(`https://420.canamaster.net/api/v1/products/category/new/${categoryId}/${page}/${limit}?filterIds=[]&&attributeIds=[]&&productIds=[]&&parentCategoryId=23&&priceMinMax=[${min},${max}]&&brandIds=[]`);
 
-    const minMax = {}
-    if (data.minMax[0].min === min || +min === 0) {
-        minMax.min = data.minMax[0].min
-    } else {
-        minMax.min = min
-    }
-    if (data.minMax[0].max === max || +max === 0) {
-        minMax.max = data.minMax[0].max
-    } else {
-        minMax.max = max
-    }
+    try {
+        const categories = await getReq('https://420.canamaster.net/api/v1/products/shop/categories/0/23');
+        const data = await getReq(`https://420.canamaster.net/api/v1/products/category/new/${categoryId}/${page}/${limit}?filterIds=[]&&attributeIds=[]&&productIds=[]&&parentCategoryId=23&&priceMinMax=[${min},${max}]&&brandIds=[]`);
 
-    return {
-        props: {
-            data,
-            path: {min, max, categoryId , page, limit},
-            categories: categories.categories,
-            minMax,
-            obj: data.minMax[0]
+        const minMax = {}
+        if (data.minMax[0].min === min || +min === 0) {
+            minMax.min = data.minMax[0].min
+        } else {
+            minMax.min = min
         }
+        if (data.minMax[0].max === max || +max === 0) {
+            minMax.max = data.minMax[0].max
+        } else {
+            minMax.max = max
+        }
+
+        return {
+            props: {
+                data,
+                path: {min, max, categoryId , page, limit},
+                categories: categories.categories,
+                minMax,
+                obj: data.minMax[0]
+            }
+        }
+    } catch (err) {
+        console.log(err)
     }
+
+
 }
 
 const filter = ({data, path, categories, minMax, obj}) => {
+
+    console.log('[]filtri ejum')
+
 
     const [minVal, setMinVal] = useState(+minMax.min);
     const [maxVal, setMaxVal] = useState(+minMax.max);
@@ -85,7 +93,7 @@ const filter = ({data, path, categories, minMax, obj}) => {
     useEffect(() => {
         const timerId = setTimeout(async () => {
             router.push(`/filter/1?page=${count}&limit=10&min=${minVal}&max=${maxVal}&categoryId=${cat}`)
-        }, 1000)
+        }, 300)
         return () => {
             clearTimeout(timerId)
         }
@@ -106,7 +114,6 @@ const filter = ({data, path, categories, minMax, obj}) => {
                         setMaxVal={setMaxVal}
                         minMax={statRef}
                     />
-
 
                     <div className={'categories__title'}> <h2>Categories</h2>
                     <div className={'filter__categories'}>

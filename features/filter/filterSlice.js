@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import {getReq} from "../../utils/request";
+import {getReq, myAxios} from "../../utils/request";
 
 const initialState = {
     categories: [],
@@ -13,18 +13,33 @@ const initialState = {
 export const getFilterCategories = createAsyncThunk(
     'counter/getFilterCategories',
     async function (_, {rejectWithValue}) {
-
-        return await getReq('https://420.canamaster.net/api/v1/products/shop/categories/0/23');
+        try {
+            const config = {
+                method: 'get',
+                url: 'https://420.canamaster.net/api/v1/products/shop/categories/0/23',
+            };
+            const res = await myAxios(config)
+            return res.data
+        } catch (err) {
+            console.log(err)
+        }
     }
 );
 
 export const getFilterProducts = createAsyncThunk(
     'counter/getFilterProducts',
-    async function ({categoryId = 0, minMax= [], limit= 10, page= 1}, {rejectWithValue}){
+    async function ({categoryId = 0, minMax = [], limit = 10, page = 1}, {rejectWithValue}) {
 
-        return await getReq(`https://420.canamaster.net/api/v1/products/category/new/${categoryId}/${page}/${limit}?filterIds=[]&&attributeIds=[]&&productIds=[]&&parentCategoryId=23&&priceMinMax=[${minMax}]&&brandIds=[]`);
-
-        // return await getReq(`https://420.canamaster.net/api/v1/products/category/new/[250]/1/10?filterIds=[]&&attributeIds=[]&&productIds=[]&&parentCategoryId=23&&priceMinMax=[1,24]&&brandIds=[]`);
+        try {
+            const config = {
+                method: 'get',
+                url: `https://420.canamaster.net/api/v1/products/category/new/${categoryId}/${page}/${limit}?filterIds=[]&&attributeIds=[]&&productIds=[]&&parentCategoryId=23&&priceMinMax=[${minMax}]&&brandIds=[]`,
+            };
+            const res = await myAxios(config)
+            return res.data
+        } catch (err) {
+            console.log(err)
+        }
     }
 );
 export const filterSlice = createSlice({

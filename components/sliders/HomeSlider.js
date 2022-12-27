@@ -7,10 +7,8 @@ export function HomeSlider({chek, radio2, xClas}) {
         <section className="home-slider">
             <div className="slider2">
                 <div className="subscribe">
-                    <label>
                         <input className="home-slider__input" type="email"
                                placeholder="Your email address"/>
-                    </label>
                     <button className="slider-btn">Subscribe</button>
                 </div>
 
@@ -57,7 +55,7 @@ export function HomeSlider({chek, radio2, xClas}) {
                                         isChek: e.target.checked
                                     })
                                 }}/>
-                                    <input className="radio-2" type="radio" name="slider" defaultChecked={chek}/>
+                                    <input className="radio-2" type="radio" name="slider" checked={chek} onChange={(e) => {}}/>
                             </div>
                     </div>
                 </div>

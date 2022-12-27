@@ -6,15 +6,19 @@ import React, {useState} from "react";
 import {Footer} from "./Footer";
 import {Provider, useSelector} from "react-redux";
 import store from '../../store/store'
+import MobileHeader from "./MobileHeader";
 
 
 export function Layout({children}) {
 
     return( <Provider store={store}>
         <div className={'opshi'}>
-            <HeaderTop/>
-            <HeaderMidl/>
-            <HeaderNav/>
+            <MobileHeader/>
+            <div className="header">
+               <HeaderTop/>
+               <HeaderMidl/>
+               <HeaderNav/>
+           </div>
             {children}
             {/*<Outlet/>*/}
 

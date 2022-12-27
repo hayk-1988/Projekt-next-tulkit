@@ -1,11 +1,19 @@
 import {Product} from "../../components/populiar-product/Product";
 import Link from "next/link";
 import {productAdapter} from "../../utils/adaptors";
+import {myAxios} from "../../utils/request";
 
 export async function getServerSideProps(context) {
     const [offset= 1, limit] = context.params.id
-    const req = await fetch(`https://420.canamaster.net/api/v1/products/popular/${offset}/${limit}`)
-    const res = await req.json()
+
+    //todo pagination dzel vor 0 cheta
+    const config = {
+        method: 'get',
+        url: `https://420.canamaster.net/api/v1/products/popular/${offset}/${limit}`,
+        headers:{"Accept-Encoding": "gzip,deflate,compress"}
+    };
+    const data = await myAxios(config)
+    const res = data.data
     return {
         props: {
             data: res,

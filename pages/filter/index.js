@@ -1,29 +1,20 @@
 import React, {useEffect, useState} from 'react';
-import Products from "../products";
 import {useDispatch, useSelector} from "react-redux";
 import {Product} from "../../components/populiar-product/Product";
 import Link from "next/link";
 import {getFilterCategories, getFilterProducts} from "../../features/filter/filterSlice";
-import {getReq} from "../../utils/request";
 import {productAdapter} from "../../utils/adaptors";
 import {useRouter} from "next/router";
-import Slider2 from "../../components/filter/Slider2";
 
 const Index = () => {
     const router = useRouter()
-
 
     const dispatch = useDispatch()
     const categories = useSelector((state) => state.filter.categories)
     const [min, setMin] = useState('')
     const [max, setMax] = useState('')
-    const [m, setM] = useState({})
     const [filters, setFilters] = useState({categoryId: 0, minMax: [], limit: 10, page: 1})
-
     const data = useSelector((state) => state.filter.filterData)
-
-    console.log(data)
-
     const prods = productAdapter(data)
 
     console.log('filteri pagum')
@@ -31,7 +22,6 @@ const Index = () => {
     useEffect(() => {
 
         router.push(`/filter/1?page=${1}&limit=10&min=${0}&max=${0}&categoryId=${0}`)
-
 
         dispatch(getFilterCategories())
 

@@ -1,22 +1,17 @@
 import React, {useState} from "react";
 import {RegHeader} from "./RegHeader";
-// import {RadiosReg} from "./RadiosReg";
+import {myAxios} from "../../utils/request";
 
 
 export function Registration(){
-    const [response , setResponse ] = useState([])
+    console.log('registratia')
+
+    const [check, setCheck] = useState(false)
+
     const [password, setPassword] = useState('')
-    const [username, setUserName] = useState('')
     const [confPassword, setConfPassword] = useState('')
     const [email, setEmail] = useState('')
     const [secCod, setSecCod] = useState('')
-    const [isCheckedClient, setCheckedClient] = useState({
-        checked: false,
-        value: 'male'
-    })
-    const [isChecked, setChecked] = useState({
-        checked: true
-    })
     const [viz, setViz] = useState({
         display: 'hide',
         text: ''
@@ -24,12 +19,12 @@ export function Registration(){
     const [wrongInput, setWrongInput] = useState({
         clasName: 'input-border'
     })
-    // const [resData, setResData] = useState({})
 
-    function handlerUsername (e) {
-        setUserName(e.target.value)
-    }
     function handlerEmail (e) {
+        setViz({
+            display: 'hide',
+            text: ''
+        })
         setEmail(e.target.value)
     }
     function handlerPassword (e) {
@@ -51,51 +46,46 @@ export function Registration(){
         setSecCod(e.target.value)
     }
 
-    let data = {
-        'email': email,
-        'password': password,
-    }
     async function handleSubmit(){
-        if (!password){
+        let data = {
+            'email': email,
+            'password': password,
+        }
+        if (!password || !email || !confPassword || !secCod){
             setViz({
                 display: 'show',
-                text: 'gaxtnabary voncor sxala krknvum 🙀'
+                text: 'please fill in all fields'
             })
         }else if (password !== confPassword){
-            console.log('ches tenum sxal es krknel gaxtnabary 👻')
-
             setViz({
                 display: 'show',
-                text: 'gaxtnabary voncor sxala krknvum 🙀'
+                text: 'password repeated incorrectly!'
             })
         }else if (secCod !== '784756'){
             setViz({
                 display: 'show',
                 text: 'wrong security cod'
             })
-        }else if (isChecked.checked){
-            setViz({
-                display: 'show',
-                text: 'must agree to the terms'
-            })
         }else {
             setViz({
                 display: 'hide',
                 text: ''
             })
-            let myHeaders = new Headers();
-            myHeaders.append("Content-Type", "application/json");
-            let raw = JSON.stringify(data);
-            let requestOptions = {
+            const config = {
                 method: 'POST',
-                headers: myHeaders,
-                body: raw,
+                url: 'https://420.canamaster.net/customer/auth/signup',
+                data
             };
-            fetch("https://420.canamaster.net/customer/auth/signup", requestOptions)
-                .then(response => response.json())
-                .then(result =>  setResponse([...response, result]) )
-                .catch(error => console.log('error', error));
-
+            try {
+                const data1 = await myAxios(config)
+                console.log(data1)
+            }catch (err){
+                setViz({
+                    display: 'show',
+                    text: err.response?.data?.error
+                })
+                console.log(err)
+            }
         }
 
     }
@@ -106,15 +96,17 @@ export function Registration(){
             <div className='registration-page'>
                 <div className="test-login">
                     <RegHeader/>
-                    <input type="text" placeholder='Username' value={username} onChange={handlerUsername}/>
                     <input type="email" placeholder='Email' value={email} onChange={handlerEmail}/>
-                    <input id={wrongInput.clasName} type="password" placeholder='Password' value={password} onChange={handlerPassword}/>
-                    <input type="password" placeholder='Confirm Password' value={confPassword} onChange={handlerConfPassword}/>
+                    <input id={wrongInput.clasName} type={!check ? "password" : 'text'} placeholder='Password' value={password} onChange={handlerPassword}/>
+                    <input type={!check ? "password" : 'text'} placeholder='Confirm Password' value={confPassword} onChange={handlerConfPassword}/>
                     <div className="security-bar">
                         <input type="text" placeholder='Security Code' value={secCod} onChange={handlerSecCode}/>
                         <div className="security-cod">{784756}</div>
                     </div>
-                    {/*<RadiosReg setChecked={setChecked} isCheckedClient={isCheckedClient} setCheckedClient={setCheckedClient}/>*/}
+                    <div className='show-password' ><input type="checkbox" checked={check} onChange={(e) => {
+                        setCheck(!check)
+                    }}/><p>show-password</p></div>
+
                     <div className={`show-problems ${viz.display}`}>
                         {viz.text}
                     </div>

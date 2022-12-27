@@ -1,23 +1,20 @@
-import React, {useEffect, useState} from "react";
-import {Checkbox} from "./Checkbox";
-import {LogHeader} from "./LogHeader";
-import {useRouter} from "next/router";
-import Link from "next/link";
 import {useDispatch, useSelector} from "react-redux";
 import {setEmail as setE} from "../../features/user/userSlice";
-// import {useLocation, useNavigate} from "react-router-dom";
-// import {useAuth} from "../hook/useAuth";
+import {LogHeader} from "./LogHeader";
+import {useRouter} from "next/router";
+import React, {useEffect, useState} from "react";
+import axios from "axios";
+import Link from "next/link";
+import Logout from "./logout";
 
 
 export function Login() {
-    let router = useRouter()
+    const dispatch = useDispatch()
+    const router = useRouter()
 
-    const [response, setResponse] = useState({})
+    const [token, setToken] = useState('')
     const [email, setEmail] = useState('')
     const [secCod, setSecCod] = useState('')
-    const [isChecked, setChecked] = useState({
-        checked: true
-    })
     const [err, setErr] = useState({
         display: 'hide',
         text: ''
@@ -25,17 +22,26 @@ export function Login() {
     const [wrongInput, setWrongInput] = useState({
         clasName: 'input-border'
     })
+    const [password, setPassword] = useState('')
 
 
-    const dispatch = useDispatch()
-    const e = useSelector((state) => state.user)
-    useEffect(()=>{
+    const user = {
+        'email': email,
+        'password': password
+    }
+    useEffect(() => {
         dispatch(setE(email))
+        const token = localStorage.getItem('token')
+        setToken(token)
     }, [email])
-
 
     function handlerEmail(e) {
         setEmail(e.target.value)
+        setErr({
+            display: 'hide',
+            text: ''
+        })
+
     }
 
     function handlerPassword(e) {
@@ -49,39 +55,24 @@ export function Login() {
                 clasName: 'input-border'
             })
         }
+        setErr({
+            display: 'hide',
+            text: ''
+        })
 
     }
 
     function handlerSecCode(e) {
         setSecCod(e.target.value)
+
     }
 
-    async function logFetch(uri) {
-        const res = await fetch(uri)
-        const body = await res.json()
-
-        return {body, status: res.status, msg: user.statusText}
-    }
-
-
-    const [password, setPassword] = useState('')
-    let data = {
-        'email': email,
-        'password': password,
-    }
-    let user = {
-        'email': email,
-        'password': password
-    }
 
     async function handleSubmit() {
-
-        if (!password) {
-            console.log('ches tenum sxal es krknel gaxtnabary 👻')
-
+        if (!password || !email || !secCod) {
             setErr({
                 display: 'show',
-                text: 'gaxtnabaryi dashty lracrats chi🙀'
+                text: 'please fill in all fields'
             })
         } else if (secCod !== '784756') {
             setErr({
@@ -93,55 +84,49 @@ export function Login() {
                 display: 'hide',
                 text: ''
             })
-            let myHeaders = new Headers();
-            myHeaders.append("Content-Type", "application/json");
-            let raw = JSON.stringify(user);
-            let requestOptions = {
-                method: 'POST',
-                headers: myHeaders,
-                body: raw,
-            };
-            fetch("https://420.canamaster.net/customer/auth/signin", requestOptions)
-                .then(response => response.json())
-                .then(result => {
-                    localStorage.setItem('token', result.token)
-                    setResponse(result)
+            try {
+                const res = await axios.post('https://420.canamaster.net/customer/auth/signin', user)
+                localStorage.setItem('token', res.data.token)
+                await router.push('/')
+            } catch (err) {
+                setErr({
+                    display: 'show',
+                    text: err.response?.data?.error
                 })
-                .catch(error => console.log('error', error))
-                .then(() => {
-                    router.push('/')
-                });
+                console.log(err)
+            }
         }
 
     }
 
-    function f() {
-        console.log(response)
+    function logoutHandler() {
+        localStorage.removeItem('token')
+        setToken('')
     }
 
     return (
         <div>
-            <div className='registration-page'>
-                <div className="login-img">
-                    <img src='https://wp.alithemes.com/html/nest/demo/assets/imgs/page/login-1.png' alt=""/>
-                </div>
-                <div className="test-login">
-                    <LogHeader/>
-                    <input type="email" placeholder='Username or Email' value={email} onChange={handlerEmail}/>
-                    <input id={wrongInput.clasName} type="password" placeholder='Your password' value={password}
-                           onChange={handlerPassword}/>
-                    <div className="security-bar">
-                        <input type="text" placeholder='Security Code' value={secCod} onChange={handlerSecCode}/>
-                        <div className="security-cod">{784756}</div>
+            {token === 'undefined' ? <h1 onClick={logoutHandler}>aoutorizatia anci balbes</h1> :
+                token ? <Logout logoutHandler={logoutHandler}/> : <div className='registration-page'>
+                    <div className="login-img">
+                        <img src='https://wp.alithemes.com/html/nest/demo/assets/imgs/page/login-1.png' alt=""/>
                     </div>
-                    <Checkbox setChecked={setChecked} text={'Remember me'}/>
-                    <div className={`show-problems ${err.display}`}>
-                        {err.text}
+                    <div className="test-login">
+                        <LogHeader/>
+                        <input type="email" placeholder='Username or Email' value={email} onChange={handlerEmail}/>
+                        <input id={wrongInput.clasName} type="password" placeholder='Your password' value={password}
+                               onChange={handlerPassword}/>
+                        <div className="security-bar">
+                            <input type="text" placeholder='Security Code' value={secCod} onChange={handlerSecCode}/>
+                            <div className="security-cod">{784756}</div>
+                        </div>
+                        <div className={`show-problems ${err.display}`}>
+                            {err.text}
+                        </div>
+                        <button className='login-btn' onClick={handleSubmit}>Log in</button>
+                        <Link href="/login/forgot-password">Forgot password</Link>
                     </div>
-                    <button className='login-btn' onClick={handleSubmit}>Log in</button>
-                    <Link href="/login/forgot-password">Forgot password</Link>
-                </div>
-            </div>
+                </div>}
         </div>
     );
 }

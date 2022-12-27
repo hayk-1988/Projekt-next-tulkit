@@ -9,6 +9,7 @@
     "lint": "./node_modules/.bin/next lint"
   },
   "dependencies": {
+    "axios": "latest",
     "@reduxjs/toolkit": "^1.7.1",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5",

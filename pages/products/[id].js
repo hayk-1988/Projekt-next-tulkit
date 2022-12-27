@@ -1,20 +1,85 @@
-import React, {useEffect, useState} from 'react';
-import {Product} from "../../components/populiar-product/Product";
-import {cartProductAdapter, productAdapter} from "../../utils/adaptors";
-import {postReq, postReqByToken} from "../../utils/request";
+import React, {useState} from 'react';
+import {myAxios} from "../../utils/request";
 import Link from "next/link";
 
 
-export async function getServerSideProps({params}) {
+// export async function getServerSideProps({params}) {
+//
+//     const config1 = {
+//         method: 'get',
+//         url: `https://420.canamaster.net/api/v1/products/${params.id}?fields%5Bprice%5D=1&fields%5Bpath%5D=1&fields%5Bicon%5D=1&fields%5Bimages%5D=1&fields%5BimageMain%5D=1&fields%5Bvideos%5D=1&fields%5BproductId%5D=1&fields%5Battributes%5D=1&fields%5Bdescriptions%5D=1&fields%5Boption%5D=1&fields%5BcurrentPrice%5D=1&fields%5Bbrands%5D=1&fields%5Bfilters%5D=1`,
+//         headers: { "Accept-Encoding": "gzip,deflate,compress" }
+//     };
+//     const res = await myAxios(config1)
+//     const data = res.data
+//     const body = {
+//         "productId": params.id
+//     }
+//     const config2 = {
+//         method: 'post',
+//         url: `https://420.canamaster.net/customer/review/listU?fields%5Bmessage%5D=1&fields%5Breply%5D=1`,
+//         data: body
+//     };
+//     const res2 = await myAxios(config2)
+//     const review = res2.data
+//
+//     const newData = {
+//         description: data.descriptions[0].description,
+//         id: data.productId,
+//         price: data.price,
+//         name: data.descriptions[0].name,
+//         image: `https://420.canamaster.net/media/image/d/350/${data?.imageMain[0]?.image?.url}`
+//     }
+//
+//     return {
+//         props: {
+//             product: newData,
+//             review
+//         }
+//     }
+// }
 
-    const res = await fetch(`https://420.canamaster.net/api/v1/products/${params.id}?fields%5Bprice%5D=1&fields%5Bpath%5D=1&fields%5Bicon%5D=1&fields%5Bimages%5D=1&fields%5BimageMain%5D=1&fields%5Bvideos%5D=1&fields%5BproductId%5D=1&fields%5Battributes%5D=1&fields%5Bdescriptions%5D=1&fields%5Boption%5D=1&fields%5BcurrentPrice%5D=1&fields%5Bbrands%5D=1&fields%5Bfilters%5D=1`)
-    const data = await res.json()
+export async function getStaticPaths() {
 
+    const config1 = {
+        method: 'get',
+        url: `https://420.canamaster.net/api/v1/products/popular/1/50`,
+        headers: {"Accept-Encoding": "gzip,deflate,compress"}
+    };
+    const res = await myAxios(config1)
+    const data = res.data
 
+    const paths = data.products.map((elem) => {
+        return {
+            params: {id: elem.productId.toString()}
+        }
+    })
+    return {
+        paths,
+        fallback: false
+    }
+}
+
+export async function getStaticProps({params}) {
+
+    console.log(params)
+    const config1 = {
+        method: 'get',
+        url: `https://420.canamaster.net/api/v1/products/${params.id}?fields%5Bprice%5D=1&fields%5Bpath%5D=1&fields%5Bicon%5D=1&fields%5Bimages%5D=1&fields%5BimageMain%5D=1&fields%5Bvideos%5D=1&fields%5BproductId%5D=1&fields%5Battributes%5D=1&fields%5Bdescriptions%5D=1&fields%5Boption%5D=1&fields%5BcurrentPrice%5D=1&fields%5Bbrands%5D=1&fields%5Bfilters%5D=1`,
+        headers: {"Accept-Encoding": "gzip,deflate,compress"}
+    };
+    const res = await myAxios(config1)
+    const data = res.data
     const body = {
         "productId": params.id
     }
-    const review = await postReq('https://420.canamaster.net/customer/review/listU?fields%5Bmessage%5D=1&fields%5Breply%5D=1', body)
+    const config2 = {
+        method: 'post',
+        url: `https://420.canamaster.net/customer/review/listU?fields%5Bmessage%5D=1&fields%5Breply%5D=1`,
+        data: body
+    };
+    const res2 = await myAxios(config2)
+    const review = res2.data
 
     const newData = {
         description: data.descriptions[0].description,
@@ -26,47 +91,11 @@ export async function getServerSideProps({params}) {
 
     return {
         props: {
-            product: newData, review
+            product: newData,
+            review
         }
     }
 }
-
-// export async function getStaticPaths(){
-//     const res = await fetch('https://420.canamaster.net/api/v1/products/popular/1/10')
-//     const data = await res.json()
-//
-//     const paths = data.products.map((elem)=>{
-//         return{
-//             params: {id: elem.productId.toString()}
-//         }
-//     })
-//     return{
-//         paths,
-//         fallback: false
-//     }
-// }
-//
-// export async function getStaticProps(context){
-//
-//     // console.log('context ', context)
-//     // console.log('-----------------------------------------')
-//     const id = context.params.id
-//
-//     const res = await fetch(`https://420.canamaster.net/api/v1/products/${id}?fields%5Bprice%5D=1&fields%5Bpath%5D=1&fields%5Bicon%5D=1&fields%5Bimages%5D=1&fields%5BimageMain%5D=1&fields%5Bvideos%5D=1&fields%5BproductId%5D=1&fields%5Battributes%5D=1&fields%5Bdescriptions%5D=1&fields%5Boption%5D=1&fields%5BcurrentPrice%5D=1&fields%5Bbrands%5D=1&fields%5Bfilters%5D=1`)
-//     const data = await res.json()
-//
-//     let newDAta = {
-//         id: data.productId,
-//         price: data.price,
-//         name: data.descriptions[0].name,
-//         image: `https://420.canamaster.net/media/image/d/350/${data.imageMain[0].image.url}`
-//     }
-//     return{
-//         props:{
-//             product: newDAta
-//         }
-//     }
-// }
 
 
 const product = ({product, review}) => {
@@ -79,15 +108,24 @@ const product = ({product, review}) => {
         const body = {
             "productId": product.id, "message": state, "userRate": 5
         }
-        await postReqByToken(``, body, token)
+        try {
+            const config = {
+                method: 'post',
+                url: `https://420.canamaster.net/customer/review/send`,
+                headers: {"Authorization": `Bearer ${token}`},
+                data:body
+            };
+            const res = await myAxios(config)
+            console.log(res.data)
+        }catch (err){
+            console.log(err)
+        }
     }
 
-    return (<div>
-
+    return (
         <div className="one-product-page">
 
             <div className="one-product">
-
                 <div className="left-side">
 
                     <div className="img">
@@ -241,6 +279,7 @@ const product = ({product, review}) => {
                     </div>
                 </div>
             </div>
+
             <div className='reviews'>
                 <h2>Reviews</h2>
                 <pre>
@@ -257,9 +296,8 @@ const product = ({product, review}) => {
 
             </div>
 
-
         </div>
-    </div>);
+    );
 };
 
 export default product;

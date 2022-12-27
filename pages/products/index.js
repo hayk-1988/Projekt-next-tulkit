@@ -1,79 +1,39 @@
-import Head from 'next/head'
 
 import Link from "next/link";
 import {Product} from "../../components/populiar-product/Product";
 import {useDispatch, useSelector} from "react-redux";
 import React, {useEffect, useRef} from "react";
-import {decCount, getProducts, incCount, setPage, setPages} from "../../features/products/productsSlice";
+import {getProducts} from "../../features/products/productsSlice";
 import {useRouter} from "next/router";
-import {adapter} from "next/dist/server/web/adapter";
-import {productAdapter} from "../../utils/adaptors";
 
-export async function getServerSideProps() {
-    const res = await fetch("https://420.canamaster.net/api/v1/products/popular/1/10")
-    const data = await res.json()
-    const count = data.count
 
-    const products = productAdapter(data)
-    return {
-        props: {
-            products,
-            count
-        }
-    }
-}
-
-export default function products({products, count}) {
+export default function products() {
     const router = useRouter()
+    const dispatch = useDispatch()
+    const products1 = useSelector((state)=> state.products.products)
+    const loading =useSelector((state)=> state.products.status)
 
     useEffect(() => {
         router.push('/products/1/10')
     },[])
-
-
-    const dispatch = useDispatch()
-    const pages = useSelector((state) => state.products.pages)
-
-
     useEffect(() => {
-        dispatch(setPages(Math.floor(count / 10)))
+        console.log('lika')
+        dispatch(getProducts())
+        console.log(products1)
+
     },[])
 
-    // const pageRef = useRef(count)
-    // console.log(pageRef.current, count)
 
-    function handleDecrement(){
-        if (count > 1){
-            dispatch(decCount())
-            localStorage.setItem('page', `${count - 1}`)
-        }
-    }
-    function handleIncrement(){
-        if (count < pages){
-            dispatch(incCount())
-            localStorage.setItem('page', `${count + 1}`)
-        }
-    }
 
-    useEffect(() => {
-        if (!localStorage.getItem('page')){
-            localStorage.setItem('page', '1')
-        }
-        let lSCount = +localStorage.getItem('page')
-        dispatch(setPage(lSCount || 1))
-    },[])
-    useEffect(() => {
-        let lSCount = +localStorage.getItem('page')
-        dispatch(getProducts(`${lSCount}/10`))
-    },[count])
 
-    const loading =useSelector((state)=> state.products.status)
+    const arr = []
+
     return (
         loading === 'loading' ? <div><h1>vay qu ara</h1></div> : <>
             <h1 className="timer-product__header">Popular Products</h1>
             <div className='products'>
                 {
-                    products?.map(prod => {
+                    products1?.map(prod => {
                         return (
                             <Product
                                 key={prod.id + Date.now()+'h'}
@@ -92,21 +52,6 @@ export default function products({products, count}) {
                 }
             </div>
 
-            <div style={{display:'flex', justifyContent:'space-evenly'}}>
-                <button className={'product-card__add-btn'} onClick={handleDecrement}>{'<<<'}</button>
-                <Link href={`/products/${count === 1 ? 1 : count - 1}/10`}><button className={'product-card__add-btn'} onClick={handleDecrement}>{'<'}</button></Link>
-
-                {+count === 1 ? undefined: <button className={'products-page__pagination'}>{1}</button>}
-                {+count === pages ? <button className={'products-page__pagination'}>{pages - 1}</button> : undefined}
-
-                <button className={'products-page__pagination-midle'}>{count}</button>
-
-                {+count === 1 ? <button className={'products-page__pagination'}>{2}</button> :  undefined}
-                {+count === pages ? undefined: <button className={'products-page__pagination'}>{pages}</button>}
-
-                <Link href={`/products/${count === pages ? pages : count + 1}/10`}><button className={'product-card__add-btn'} onClick={handleIncrement}>{'>'}</button></Link>
-                <button className={'product-card__add-btn'} onClick={handleIncrement}>{'>>>'}</button>
-            </div>
         </>
 
     )

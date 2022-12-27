@@ -2,42 +2,65 @@ import Head from 'next/head'
 
 import Link from "next/link";
 import {Product} from "../components/populiar-product/Product";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import React, {useState} from "react";
-import {setPages} from "../features/products/productsSlice";
 import {productAdapter} from "../utils/adaptors";
 import {Banners} from "../components/bunner/Banners";
 import {HomeSlider} from "../components/sliders/HomeSlider";
 import {HomeSlider2} from "../components/sliders/HomeSlider2";
+import LocaleSwitcher from "../components/locale-switcher";
+import ToUp from "../components/to-up";
 import TimerProducts from "../components/timer-product/TimerProducts";
 
-export async function getServerSideProps() {
+export async function getServerSideProps({locale, locales,}) {
+    let lang = ''
+    switch (locale){
+        case 'en':
+            lang = 'English'
+            break;
+        case 'fr':
+            lang = 'Frans'
+            break;
+        case 'ru':
+            lang = "Tvarish"
+            break;
+        default:
+            lang = 'Armenian'
+    }
     const res = await fetch("https://420.canamaster.net/api/v1/products/popular/1/10")
     const data = await res.json()
-    const count = data.count
     return {
         props: {
-             data
+             data,
+            lang
         }
     }
 }
 
 
-export default function Home({data}) {
-    const dispatch = useDispatch()
+export default function Home({data, lang}) {
 
-    dispatch(setPages(Math.floor(data.count / 10)))
+    // const dispatch = useDispatch()
+    // dispatch(setPages(Math.floor(data.count / 10)))
     const prods = productAdapter(data)
-
     const loading =useSelector((state)=> state.products.status)
-
     const [chek, isChek] = useState(false)
     const [className, setClassName] = useState(['show', 'hide'])
 
 
+    function scrollSmooth() {
+        window.scrollTo({top: 0, behavior: "smooth"});
+    }
+    function upHandler (){
+        scrollSmooth()
+    }
+
     return (
 
-        loading === 'loading' ? <div><h1>vay qu ara</h1></div> : <>
+        loading === 'loading' ? <div><p className='loading'>LOADED...</p></div> : <>
+            {/*<LocaleSwitcher/>*/}
+            {/*<h1 className="lang">{lang}</h1>*/}
+            <ToUp upHandler={upHandler}/>
             <HomeSlider xClas={className} chek={chek} radio2={(obj) => {
                 isChek(obj.isChek)
                 setClassName([className[1], className[0]])

@@ -10,7 +10,7 @@ export function cartProductAdapter(products){
             image: prod.product?.imageMain[0]?.image?.url ? `${url}${prod.product?.imageMain[0]?.image?.url}` : defaultImg,
             quantity: prod.quantity,
             cartId: [prod.cartId],
-            product: prod.product
+            product: prod.product,
         }
     })
     let obj = data.reduce((p, c) => {

@@ -1,10 +1,6 @@
-import React, {useEffect, useState} from 'react';
-import {LogHeader} from "../../components/Registration-Login/LogHeader";
-import {Checkbox} from "../../components/Registration-Login/Checkbox";
-import Link from "next/link";
-import {postReq} from "../../utils/request";
-import {useDispatch, useSelector} from "react-redux";
-import {setEmail as setE} from '../../features/user/userSlice'
+import React, {useState} from 'react';
+import {myAxios} from "../../utils/request";
+import {useSelector} from "react-redux";
 
 const ForgotPassword = () => {
     const e = useSelector((state) => state.user.email)
@@ -36,8 +32,17 @@ const ForgotPassword = () => {
             const body = {
                 "email": email
             }
-            const data = await postReq(`https://420.canamaster.net/customer/auth/reset-password`, body, )
-            console.log(data, '======')
+            try {
+                const config = {
+                    method: 'post',
+                    url: `https://420.canamaster.net/customer/auth/reset-password`,
+                    data:body
+                };
+                const res = await myAxios(config)
+                console.log(res.data)
+            }catch (err){
+                console.log(err)
+            }
         }
     }
 

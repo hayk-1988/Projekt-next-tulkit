@@ -38,13 +38,12 @@ export function HeaderNav() {
                 <p className="nav-tab">About</p>
                 <p className="nav-tab">Blog</p>
                 <p className="nav-tab">Page</p>
+
                 <div className="page">
                     <p><Link href="/registration">Registration</Link></p>
                     <p><Link href="/login">Login</Link></p>
                     <p><Link href="/login/forgot-password">Forgot password</Link></p>
                 </div>
-                <p className="nav-tab">Contact</p>
-
 
             </div>
             <div className="feedback">

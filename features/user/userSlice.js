@@ -20,6 +20,7 @@ export const userSlice = createSlice({
             state.lasName = action.payload
         }
     }
+
 })
 
 export const {setFirstName, setLastName, setEmail} = userSlice.actions

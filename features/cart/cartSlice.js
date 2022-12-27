@@ -1,5 +1,7 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
-import {deleteReq, getByTokenReq} from "../../utils/request";
+import {myAxios} from "../../utils/request";
+import axios from "axios";
+import {getFilterCategories} from "../filter/filterSlice";
 
 
 const initialState = {
@@ -10,21 +12,38 @@ const initialState = {
 
 
 export const getCartProducts = createAsyncThunk('cartProducts/getCartProducts',
-    async (_, {rejectWithValue, dispatch}) =>  {
-        console.log('voooooooooooooooovvvvv======')
+    async (_, {rejectWithValue, dispatch}) => {
         const token = localStorage.getItem('token')
-        let firstDataForCount = await getByTokenReq("https://420.canamaster.net/cart/rest/1/1", token);
-        let res = await getByTokenReq(`https://420.canamaster.net/cart/rest/1/${firstDataForCount.count}`, token);
+        try {
+            const config1 = {
+                method: 'get',
+                url: "https://420.canamaster.net/cart/rest/1/1",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            };
+            const res = await myAxios(config1)
+            const config2 = {
+                method: 'get',
+                url: `https://420.canamaster.net/cart/rest/1/${res.data.count}`,
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            };
+            const data = await myAxios(config2)
 
-        dispatch(setCount(res.count))
-        dispatch(addCartProducts(res.data))
+            dispatch(setCount(res.data.count))
+            dispatch(addCartProducts(data.data.data))
+        } catch (err) {
+            console.log(err)
+        }
     })
 
 export const deleteCartProductsFetch = createAsyncThunk('cartProducts/deleteCartProductsFetch',
     async (cartIds, {rejectWithValue, dispatch}) => {
         try {
             cartIds.map(async (elem) => {
-                await deleteReq(`https://420.canamaster.net/cart/rest/${elem}`)
+                await axios.delete(`https://420.canamaster.net/cart/rest/${elem}`)
             })
         } catch (err) {
             console.log(err)
@@ -48,16 +67,19 @@ export const cartProductSliceReducer = createSlice({
         }
 
     },
-    extraReducers: {
-        [getCartProducts.fulfilled]() {
-            console.log('getCartProducts: fulfilled')
-        },
-        [getCartProducts.pending](state) {
+    extraReducers: (builder) => {
+        builder.addCase(getCartProducts.pending, (state) => {
+            console.log('pending');
             state.status = 'loading';
-        },
-        [getCartProducts.rejected]() {
-            console.log('getCartProducts: rejected')
-        }
+        });
+        builder.addCase(getCartProducts.fulfilled, (state, action) => {
+            console.log('fulfilled');
+            state.status = 'idle';
+        });
+        builder.addCase(getCartProducts.rejected, (state, action) => {
+            console.log('rejected');
+            state.status = 'idle';
+        })
     }
 })
 

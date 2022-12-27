@@ -1,7 +1,7 @@
 import {PriceBar} from "../populiar-product/PriceBar";
 import {Button} from "../populiar-product/Button";
 import {RatingStars} from "../populiar-product/RatingStars";
-import {memo, useRef, useState} from "react";
+import {memo, useState} from "react";
 
 
 export default memo(function TimerProduct({img, price, oldPrice, deadLine}) {
@@ -13,8 +13,6 @@ export default memo(function TimerProduct({img, price, oldPrice, deadLine}) {
         s: '00'
     })
 
-    const countRef = useRef(0)
-    console.log(countRef.current++)
     let timer = setTimeout(() => {
         let t = Date.parse(deadLine) - Date.parse(new Date()),
             seconds = Math.floor((t / 1000) % 60),

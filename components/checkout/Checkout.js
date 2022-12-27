@@ -36,7 +36,7 @@ const Checkout = ({order, cartItems}) => {
                         cartItems?.map(elem => {
                             return(
                                 <CartProduct
-                                    key={elem.productId + Date.now()+'a'}
+                                    key={Math.random() + 'order' + Date.now()}
                                     cartId={elem.productId}
                                     price={elem.price}
                                     image={elem.image}

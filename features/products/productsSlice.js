@@ -1,8 +1,10 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {myAxios} from "../../utils/request";
+import {productAdapter} from "../../utils/adaptors";
 
 
 const initialState = {
-    products: {count: 10},
+    products: [],
     count: 1,
     pages: 1,
     status: 'idle',
@@ -10,9 +12,14 @@ const initialState = {
 }
 
 export const getProducts = createAsyncThunk('products/getProducts',
-    async (url, {rejectWithValue, dispatch}) => {
-        const req = await fetch(`https://420.canamaster.net/api/v1/products/popular/${url}`)
-        return await req.json()
+    async (_, {rejectWithValue, dispatch}) => {
+        const config = {
+            method: 'get',
+            url: `https://420.canamaster.net/api/v1/products/popular/1/10`
+        };
+        const data = await myAxios(config)
+        console.log(data.data)
+        return productAdapter(data.data)
     })
 
 
@@ -55,7 +62,7 @@ export const productSliceReducer = createSlice({
             console.log('rejected');
             state.status = 'idle';
         });
-    },
+    }
 })
 
 export const {addProducts, setPages, incCount, decCount, setPage, setToken} = productSliceReducer.actions

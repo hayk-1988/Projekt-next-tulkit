@@ -5,7 +5,6 @@ import Slider2 from "../../components/filter/Slider2";
 const Fil = () => {
     return (
         <div>
-            {/*<Filter/>*/}
             <Slider2/>
         </div>
     );
