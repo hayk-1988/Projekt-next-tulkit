@@ -6,6 +6,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import Link from "next/link";
 import Logout from "./logout";
+import {loginReq} from "../../utils/request";
 
 
 export function Login() {
@@ -84,17 +85,7 @@ export function Login() {
                 display: 'hide',
                 text: ''
             })
-            try {
-                const res = await axios.post('https://420.canamaster.net/customer/auth/signin', user)
-                localStorage.setItem('token', res.data.token)
-                await router.push('/')
-            } catch (err) {
-                setErr({
-                    display: 'show',
-                    text: err.response?.data?.error
-                })
-                console.log(err)
-            }
+            await loginReq(user, setErr, router)
         }
 
     }

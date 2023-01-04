@@ -1,8 +1,8 @@
-export function Button({className, children}) {
+export function Button({className,  buttonDescription}) {
 
 
     return (
-        <a href="Projekt-next-tulkit/components/bunner/Button#" className={className}>{children}<span className="btn__row">➙</span>
+        <a href="#" className={className}>{buttonDescription}<span className="btn__row">➙</span>
         </a>
 
     )

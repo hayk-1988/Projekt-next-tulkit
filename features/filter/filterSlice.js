@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import {getReq, myAxios} from "../../utils/request";
+import {getFilterCategoriesReq, getFilterProductsReq} from "./api";
 
 const initialState = {
     categories: [],
@@ -14,12 +14,7 @@ export const getFilterCategories = createAsyncThunk(
     'counter/getFilterCategories',
     async function (_, {rejectWithValue}) {
         try {
-            const config = {
-                method: 'get',
-                url: 'https://420.canamaster.net/api/v1/products/shop/categories/0/23',
-            };
-            const res = await myAxios(config)
-            return res.data
+            return await getFilterCategoriesReq()
         } catch (err) {
             console.log(err)
         }
@@ -29,14 +24,8 @@ export const getFilterCategories = createAsyncThunk(
 export const getFilterProducts = createAsyncThunk(
     'counter/getFilterProducts',
     async function ({categoryId = 0, minMax = [], limit = 10, page = 1}, {rejectWithValue}) {
-
         try {
-            const config = {
-                method: 'get',
-                url: `https://420.canamaster.net/api/v1/products/category/new/${categoryId}/${page}/${limit}?filterIds=[]&&attributeIds=[]&&productIds=[]&&parentCategoryId=23&&priceMinMax=[${minMax}]&&brandIds=[]`,
-            };
-            const res = await myAxios(config)
-            return res.data
+            return await getFilterProductsReq(categoryId, page, limit, minMax)
         } catch (err) {
             console.log(err)
         }
@@ -68,7 +57,7 @@ export const filterSlice = createSlice({
         builder.addCase(getFilterCategories.fulfilled, (state, action) => {
             console.log('fulfilled');
             state.status = 'idle';
-            state.categories = action.payload.categories;
+            state.categories = action.payload?.categories;
         });
         builder.addCase(getFilterCategories.rejected, (state, action) => {
             console.log('rejected');

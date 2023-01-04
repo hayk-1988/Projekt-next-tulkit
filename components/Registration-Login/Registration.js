@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import {RegHeader} from "./RegHeader";
-import {myAxios} from "../../utils/request";
+import {myAxios, registrationReq} from "../../utils/request";
 
 
-export function Registration(){
+export function Registration() {
     console.log('registratia')
 
     const [check, setCheck] = useState(false)
@@ -20,72 +20,61 @@ export function Registration(){
         clasName: 'input-border'
     })
 
-    function handlerEmail (e) {
+    function handlerEmail(e) {
         setViz({
             display: 'hide',
             text: ''
         })
         setEmail(e.target.value)
     }
-    function handlerPassword (e) {
+
+    function handlerPassword(e) {
         setPassword(e.target.value)
-        if (e.target.value.length > 5){
+        if (e.target.value.length > 5) {
             setWrongInput({
                 clasName: ''
             })
-        }else {
+        } else {
             setWrongInput({
                 clasName: 'input-border'
             })
         }
     }
-    function handlerConfPassword (e) {
+
+    function handlerConfPassword(e) {
         setConfPassword(e.target.value)
     }
+
     function handlerSecCode(e) {
         setSecCod(e.target.value)
     }
 
-    async function handleSubmit(){
+    async function handleSubmit() {
         let data = {
             'email': email,
             'password': password,
         }
-        if (!password || !email || !confPassword || !secCod){
+        if (!password || !email || !confPassword || !secCod) {
             setViz({
                 display: 'show',
                 text: 'please fill in all fields'
             })
-        }else if (password !== confPassword){
+        } else if (password !== confPassword) {
             setViz({
                 display: 'show',
                 text: 'password repeated incorrectly!'
             })
-        }else if (secCod !== '784756'){
+        } else if (secCod !== '784756') {
             setViz({
                 display: 'show',
                 text: 'wrong security cod'
             })
-        }else {
+        } else {
             setViz({
                 display: 'hide',
                 text: ''
             })
-            const config = {
-                method: 'POST',
-                url: 'https://420.canamaster.net/customer/auth/signup',
-                data
-            };
-            try {
-                const data1 = await myAxios(config)
-                console.log(data1)
-            }catch (err){
-                setViz({
-                    display: 'show',
-                    text: err.response?.data?.error
-                })
-                console.log(err)
-            }
+            await registrationReq(data, setViz)
         }
 
     }
@@ -97,13 +86,15 @@ export function Registration(){
                 <div className="test-login">
                     <RegHeader/>
                     <input type="email" placeholder='Email' value={email} onChange={handlerEmail}/>
-                    <input id={wrongInput.clasName} type={!check ? "password" : 'text'} placeholder='Password' value={password} onChange={handlerPassword}/>
-                    <input type={!check ? "password" : 'text'} placeholder='Confirm Password' value={confPassword} onChange={handlerConfPassword}/>
+                    <input id={wrongInput.clasName} type={!check ? "password" : 'text'} placeholder='Password'
+                           value={password} onChange={handlerPassword}/>
+                    <input type={!check ? "password" : 'text'} placeholder='Confirm Password' value={confPassword}
+                           onChange={handlerConfPassword}/>
                     <div className="security-bar">
                         <input type="text" placeholder='Security Code' value={secCod} onChange={handlerSecCode}/>
                         <div className="security-cod">{784756}</div>
                     </div>
-                    <div className='show-password' ><input type="checkbox" checked={check} onChange={(e) => {
+                    <div className='show-password'><input type="checkbox" checked={check} onChange={(e) => {
                         setCheck(!check)
                     }}/><p>show-password</p></div>
 

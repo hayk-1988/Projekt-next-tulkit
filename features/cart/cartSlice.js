@@ -1,7 +1,5 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
-import {myAxios} from "../../utils/request";
-import axios from "axios";
-import {getFilterCategories} from "../filter/filterSlice";
+import {deleteCartProductReq, getCartProductReq} from "./api";
 
 
 const initialState = {
@@ -10,30 +8,12 @@ const initialState = {
     status: 'idle',
 }
 
-
 export const getCartProducts = createAsyncThunk('cartProducts/getCartProducts',
     async (_, {rejectWithValue, dispatch}) => {
-        const token = localStorage.getItem('token')
         try {
-            const config1 = {
-                method: 'get',
-                url: "https://420.canamaster.net/cart/rest/1/1",
-                headers: {
-                    "Authorization": `Bearer ${token}`
-                }
-            };
-            const res = await myAxios(config1)
-            const config2 = {
-                method: 'get',
-                url: `https://420.canamaster.net/cart/rest/1/${res.data.count}`,
-                headers: {
-                    "Authorization": `Bearer ${token}`
-                }
-            };
-            const data = await myAxios(config2)
-
+            const res = await getCartProductReq()
             dispatch(setCount(res.data.count))
-            dispatch(addCartProducts(data.data.data))
+            dispatch(addCartProducts(res.data.data))
         } catch (err) {
             console.log(err)
         }
@@ -42,9 +22,7 @@ export const getCartProducts = createAsyncThunk('cartProducts/getCartProducts',
 export const deleteCartProductsFetch = createAsyncThunk('cartProducts/deleteCartProductsFetch',
     async (cartIds, {rejectWithValue, dispatch}) => {
         try {
-            cartIds.map(async (elem) => {
-                await axios.delete(`https://420.canamaster.net/cart/rest/${elem}`)
-            })
+            await deleteCartProductReq(cartIds)
         } catch (err) {
             console.log(err)
         }
@@ -63,7 +41,7 @@ export const cartProductSliceReducer = createSlice({
         },
         deleteCartProduct(state, acton) {
             --state.count
-            state.cartProducts = state.cartProducts.filter(cProd => cProd.productId !== acton.payload)
+            state.cartProducts = state.cartProducts?.filter(cProd => cProd.productId !== acton.payload)
         }
 
     },

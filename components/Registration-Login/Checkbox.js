@@ -11,7 +11,7 @@ export function Checkbox({setChecked, text}){
                 checked: !e.target.checked
             })
         }}/>
-        <label className='checkbox-label'  htmlFor="checkbox">
+        <label className='checkbox-label' htmlFor="checkbox">
             {text}
         </label>
         </div>

@@ -15,10 +15,10 @@ export function HeaderTop (){
         <div className="header-top">
             <div className="nav-bar">
                 <ul className="nav-list">
-                    <li className="nav-list__item"><a href="Projekt-next-tulkit/components/layout/HeaderTop#">About Us</a></li>
-                    <li className="nav-list__item"><a href="Projekt-next-tulkit/components/layout/HeaderTop#">My Account</a></li>
-                    <li className="nav-list__item"><a href="Projekt-next-tulkit/components/layout/HeaderTop#">Wishlist</a></li>
-                    <li className="nav-list__item"><a href="Projekt-next-tulkit/components/layout/HeaderTop#">Order Tracking</a></li>
+                    <li className="nav-list__item"><a href="#">About Us</a></li>
+                    <li className="nav-list__item"><a href="#">My Account</a></li>
+                    <li className="nav-list__item"><a href="#">Wishlist</a></li>
+                    <li className="nav-list__item"><a href="#">Order Tracking</a></li>
                 </ul>
             </div>
             <div className="language-bar">

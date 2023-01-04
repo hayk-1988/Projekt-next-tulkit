@@ -102,11 +102,9 @@ export function HomeSlider2() {
                         }}>
                             {'<'}
                         </button>
-
                         <div className="inner-slider">
                             {prods}
                         </div>
-
                         <button className="btn-slider btn--right" onClick={(e) => {
                             let k = prods.pop()
                             setProds([
@@ -117,8 +115,6 @@ export function HomeSlider2() {
                             {'>'}
                         </button>
                     </div>
-
-
                 </div>
             </div>
         </>

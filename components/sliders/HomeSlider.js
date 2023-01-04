@@ -32,7 +32,6 @@ export function HomeSlider({chek, radio2, xClas}) {
                                         })
                                     }}/>
                             </div>
-
                     </div>
 
                 </div>

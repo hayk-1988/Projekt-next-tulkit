@@ -1,4 +1,4 @@
-import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 
 const ToUp = ({upHandler}) => {
 
@@ -23,7 +23,7 @@ const ToUp = ({upHandler}) => {
     },[])
 
     return (
-        <div ref={upRef} className={''} onClick={upHandler}>
+        <div ref={upRef} className={'hide'} onClick={upHandler}>
             <p onClick={(e) => {
                 console.log(e)
             }}>^</p>
