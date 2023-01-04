@@ -9,8 +9,8 @@
     "lint": "./node_modules/.bin/next lint"
   },
   "dependencies": {
-    "axios": "latest",
     "@reduxjs/toolkit": "^1.7.1",
+    "axios": "latest",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5",
     "immer": "^9.0.16",
@@ -20,11 +20,10 @@
     "react-redux": "^8.0.5",
     "redux": "^4.2.0",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.4.2"
+    "redux-thunk": "^2.4.2",
+    "sass": "^1.57.1"
   },
   "devDependencies": {
     "redux-devtools-extension": "^2.13.9"
   }
 }
-
-

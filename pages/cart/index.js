@@ -4,9 +4,12 @@ import CartProduct from "../../components/cart/CartProduct";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteCartProduct, deleteCartProductsFetch, getCartProducts} from "../../features/cart/cartSlice";
 import {cartProductAdapter} from "../../utils/adaptors";
+import {useRouter} from "next/router";
 
 
 const cartIndex = () => {
+    const router = useRouter()
+
 
     const dispatch = useDispatch()
     const cartProducts = useSelector((state) => state.cartProducts.cartProducts)
@@ -14,6 +17,9 @@ const cartIndex = () => {
     const cartProds = cartProductAdapter(cartProducts)
 
     useEffect(() => {
+        if (!localStorage.getItem('token')){
+            router.push('/login')
+        }
         dispatch(getCartProducts())
     }, [])
 

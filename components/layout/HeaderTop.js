@@ -27,7 +27,7 @@ export function HeaderTop (){
                     </li>
                     {otherLocales.map(elem => {
                         return (
-                            <li><button key={Math.random() + 'ased' + Date.now()} className='lang_btn' onClick={() => {
+                            <li key={Math.random() + 'ased' + Date.now()}><button className='lang_btn' onClick={() => {
                                 langHandler(elem)
                             }}>{elem}</button></li>
                         )

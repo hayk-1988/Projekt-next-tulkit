@@ -60,7 +60,6 @@ const filter = ({data, path, categories, minMax, obj}) => {
 
     const statRef = useRef(minMax)
 
-    console.log(statRef)
     const [cat, setCat] = useState(path.categoryId)
     const [count, setCount] = useState(path.page)
 
@@ -90,6 +89,7 @@ const filter = ({data, path, categories, minMax, obj}) => {
         }
     }
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
         const timerId = setTimeout(async () => {
             router.push(`/filter/1?page=${count}&limit=10&min=${minVal}&max=${maxVal}&categoryId=${cat}`)

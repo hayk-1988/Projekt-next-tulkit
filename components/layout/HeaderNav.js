@@ -35,7 +35,10 @@ export function HeaderNav() {
                 <Link href="/products">
                     <p className="nav-tab">Products</p>
                 </Link>
-                <p className="nav-tab">About</p>
+                <Link href="/about">
+                    <p className="nav-tab">About</p>
+                </Link>
+
                 <p className="nav-tab">Blog</p>
                 <p className="nav-tab">Page</p>
 

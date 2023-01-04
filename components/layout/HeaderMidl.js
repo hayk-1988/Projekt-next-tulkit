@@ -1,4 +1,10 @@
+import {useSelector} from "react-redux";
+
 export function HeaderMidl() {
+    const count = useSelector((state) => state.cartProducts.count)
+
+
+    console.log(count)
     return (
         <div className="header-middle">
             <div className="header-wrap">
@@ -68,7 +74,6 @@ export function HeaderMidl() {
                     </div>
 
                     <div className="header-middle__action-bar">
-
                         <div className="compare">
                             <svg width="20" height="20" viewBox="0 0 25 25">
                                 <path
@@ -85,7 +90,6 @@ export function HeaderMidl() {
                             </svg>
                             Compare
                         </div>
-
                         <div className="wishlist">
                             <svg width="20" height="20" viewBox="0 0 25 25" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -100,6 +104,13 @@ export function HeaderMidl() {
                             </svg>
                             Wishlist
                         </div>
+
+
+
+
+
+
+
 
                         <div className="cart">
                             <svg width="20" height="20" viewBox="0 0 25 25" fill="none"
@@ -122,7 +133,16 @@ export function HeaderMidl() {
                                 </defs>
                             </svg>
                             Cart
+                            <div className="cart-count">{count}</div>
                         </div>
+
+
+
+
+
+
+
+
 
                         <div className="account">
                             <svg width="20" height="20" viewBox="0 0 25 25" fill="none"

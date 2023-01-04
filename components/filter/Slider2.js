@@ -8,8 +8,7 @@ const Slider2 = ({minVal,maxVal,setMaxVal, setMinVal, minMax}) => {
     const [className, setClassName] = useState(["thumb thumb--zindex-3", "thumb thumb--zindex-4"])
 
 
-    console.log('filtri taki ejum =---')
-    console.log(minMax, "===")
+    console.log('filtri Slider ejum ')
     return (
         <>
            <div className={s.slider}>
