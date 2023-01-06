@@ -9,7 +9,6 @@ export function Button({className, text, svg, data}) {
     const dispatch = useDispatch()
 
     async function addToCart() {
-        console.log(data)
         let token = localStorage.getItem('token')
         if (!token) {
             return router.push('/login')

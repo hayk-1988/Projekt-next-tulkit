@@ -17,7 +17,6 @@ const Index = () => {
     const data = useSelector((state) => state.filter.filterData)
     const prods = productAdapter(data)
 
-    console.log('filteri pagum')
 
     useEffect(() => {
 
@@ -55,12 +54,9 @@ const Index = () => {
                                                onChange={(e) => {
 
                                                    if (e.target.checked){
-                                                       console.log(e.target.checked)
                                                        localStorage.setItem('category', elem.categoryId)
                                                        const categoryId = localStorage.getItem('category')
                                                        setFilters({...filters, categoryId: categoryId})
-                                                   }else {
-                                                       console.log(e.target.checked, 'radioi drsum')
                                                    }
                                                }}
                                         />

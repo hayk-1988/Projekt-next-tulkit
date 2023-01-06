@@ -5,14 +5,12 @@ const ToUp = ({upHandler}) => {
     const upRef = useRef()
 
     useEffect(() => {
-        let a = upRef.current?.offsetHeight
-        console.log(upRef.current?.offsetHeight)
 
         function scrollDown (){
             if (window.scrollY > window.screen.height){
-                console.log(upRef.current.className = 'up')
+                upRef.current.className = 'up'
             }else {
-                console.log(upRef.current.className = 'hide')
+                upRef.current.className = 'hide'
             }
         }
         window.addEventListener('scroll', scrollDown)
@@ -24,9 +22,7 @@ const ToUp = ({upHandler}) => {
 
     return (
         <div ref={upRef} className={'hide'} onClick={upHandler}>
-            <p onClick={(e) => {
-                console.log(e)
-            }}>^</p>
+            <p>^</p>
         </div>
     );
 };

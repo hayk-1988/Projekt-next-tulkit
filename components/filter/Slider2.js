@@ -8,7 +8,6 @@ const Slider2 = ({minVal,maxVal,setMaxVal, setMinVal, minMax}) => {
     const [className, setClassName] = useState(["thumb thumb--zindex-3", "thumb thumb--zindex-4"])
 
 
-    console.log('filtri Slider ejum ')
     return (
         <>
            <div className={s.slider}>
@@ -18,8 +17,8 @@ const Slider2 = ({minVal,maxVal,setMaxVal, setMinVal, minMax}) => {
                <div>
                    <input
                        type="range"
-                       min={minMax.min}
-                       max={minMax.max}
+                       min={minMax?.min}
+                       max={minMax?.max}
                        value={minVal}
                        className={`${s[`${className[0]}`]} ${s.thumb}`}
                        onChange={(event) => {
@@ -32,8 +31,8 @@ const Slider2 = ({minVal,maxVal,setMaxVal, setMinVal, minMax}) => {
                    />
                    <input
                        type="range"
-                       min={minMax.min}
-                       max={minMax.max}
+                       min={minMax?.min}
+                       max={minMax?.max}
                        value={maxVal}
                        className={`${s[className[1]]} ${s.thumb}`}
                        onChange={(event) => {

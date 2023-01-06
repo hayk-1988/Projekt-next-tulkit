@@ -3,7 +3,6 @@ import {useRef, useState} from "react";
 
 
 export function HomeSlider2() {
-    console.log('home slider')
 
 
     const [prods, setProds] = useState([
@@ -79,8 +78,6 @@ export function HomeSlider2() {
     ])
 
     const prodRef = useRef()
-
-    console.log(prodRef.current)
 
     return (
         <>

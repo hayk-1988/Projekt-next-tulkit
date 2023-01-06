@@ -8,41 +8,24 @@ import {productAdapter} from "../utils/adaptors";
 import {Banners} from "../components/bunner/Banners";
 import {HomeSlider} from "../components/sliders/HomeSlider";
 import {HomeSlider2} from "../components/sliders/HomeSlider2";
-import LocaleSwitcher from "../components/locale-switcher";
 import ToUp from "../components/to-up";
 import TimerProducts from "../components/timer-product/TimerProducts";
+import {getProductsReq} from "../utils/request";
 
-export async function getServerSideProps({locale, locales,}) {
-    let lang = ''
-    switch (locale){
-        case 'en':
-            lang = 'English'
-            break;
-        case 'fr':
-            lang = 'Frans'
-            break;
-        case 'ru':
-            lang = "Tvarish"
-            break;
-        default:
-            lang = 'Armenian'
-    }
-    const res = await fetch("https://420.canamaster.net/api/v1/products/popular/1/10")
-    const data = await res.json()
+export async function getServerSideProps() {
+    const resProducts = await getProductsReq(1, 10)
+    const products = resProducts.data
     return {
         props: {
-             data,
-            lang
+            products,
         }
     }
 }
 
 
-export default function Home({data, lang}) {
+export default function Home({products}) {
 
-    // const dispatch = useDispatch()
-    // dispatch(setPages(Math.floor(data.count / 10)))
-    const prods = productAdapter(data)
+    const popularProducts = productAdapter(products)
     const loading =useSelector((state)=> state.products.status)
     const [chek, isChek] = useState(false)
     const [className, setClassName] = useState(['show', 'hide'])
@@ -58,8 +41,6 @@ export default function Home({data, lang}) {
     return (
 
         loading === 'loading' ? <div><p className='loading'>LOADED...</p></div> : <>
-            {/*<LocaleSwitcher/>*/}
-            {/*<h1 className="lang">{lang}</h1>*/}
             <ToUp upHandler={upHandler}/>
             <HomeSlider xClas={className} chek={chek} radio2={(obj) => {
                 isChek(obj.isChek)
@@ -69,7 +50,7 @@ export default function Home({data, lang}) {
             <h1 className="timer-product__header">Popular Products</h1>
             <div className='products'>
                 {
-                    prods?.map(prod => {
+                    popularProducts?.map(prod => {
                         return (
                             <Product
                                 key={Math.random() +'fidcb' + Date.now()}
@@ -77,7 +58,6 @@ export default function Home({data, lang}) {
                                 image={prod.image}
                                 price={prod.price}
                                 id={prod.id}
-                                // val={value}
                             >
                                 <Link href={`/products/${prod.id}`}>
                                     <p className="description ">{prod.name}</p>

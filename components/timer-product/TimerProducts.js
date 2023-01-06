@@ -4,8 +4,6 @@ import {memo} from 'react'
 export default function TimerProducts() {
 
 
-    console.log('TimerProducts-i mej')
-
 
     return (
         <div className="timer-products">

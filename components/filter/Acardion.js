@@ -7,9 +7,7 @@ const Acardion = () => {
 
     function openCloseHandler(e) {
 
-        console.log(e.target.id)
         const id = +e.target.id
-        console.log(state)
         if (state[id] === 'open'){
             return setState([ '', '', '', '', ''])
         }
@@ -22,8 +20,7 @@ const Acardion = () => {
             }
         }
         setState([...arr])
-        // console.log(e.target.lastElementChild.classList.toggle(`${state[id]}`))
-        console.log('ste')
+
     }
 
     return (

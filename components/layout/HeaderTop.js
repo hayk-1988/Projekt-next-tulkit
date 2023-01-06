@@ -1,5 +1,6 @@
 import {useRouter} from "next/router";
 import React from "react";
+import Link from "next/link";
 
 export function HeaderTop (){
     const router = useRouter()
@@ -15,10 +16,10 @@ export function HeaderTop (){
         <div className="header-top">
             <div className="nav-bar">
                 <ul className="nav-list">
-                    <li className="nav-list__item"><a href="#">About Us</a></li>
-                    <li className="nav-list__item"><a href="#">My Account</a></li>
-                    <li className="nav-list__item"><a href="#">Wishlist</a></li>
-                    <li className="nav-list__item"><a href="#">Order Tracking</a></li>
+                    <li className="nav-list__item"><Link href="#">About Us</Link></li>
+                    <li className="nav-list__item"><Link href="#">My Account</Link></li>
+                    <li className="nav-list__item"><Link href="#">Wishlist</Link></li>
+                    <li className="nav-list__item"><Link href="#">Order Tracking</Link></li>
                 </ul>
             </div>
             <div className="language-bar">
@@ -33,7 +34,7 @@ export function HeaderTop (){
                         )
                     })}
                     <li className="language-bar__list-item"></li>
-                    <li className="language-bar__list-item"><a href="/">USD</a></li>
+                    <li className="language-bar__list-item"><Link href="/">USD</Link></li>
                 </ul>
             </div>
         </div>

@@ -7,7 +7,7 @@ import {cartProductAdapter} from "../../utils/adaptors";
 import {useRouter} from "next/router";
 
 
-const cartIndex = () => {
+const CartIndex = () => {
     const router = useRouter()
 
 
@@ -53,4 +53,4 @@ const cartIndex = () => {
     );
 };
 
-export default cartIndex;
+export default CartIndex;

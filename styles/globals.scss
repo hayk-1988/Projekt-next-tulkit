@@ -2228,6 +2228,9 @@ label:hover {
     max-width: 6rem;
 }
 
+.add-btn svg path {
+    fill: #fff;
+}
 .add-bar {
     /*display: flex;*/
     /*justify-content: flex-start;*/
@@ -2287,7 +2290,7 @@ label:hover {
 }
 
 .heart-btn svg path {
-    fill: #333;
+    fill: #3bb77e;
 }
 
 @keyframes color {

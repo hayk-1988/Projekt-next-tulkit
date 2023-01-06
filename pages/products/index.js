@@ -7,7 +7,7 @@ import {getProducts} from "../../features/products/productsSlice";
 import {useRouter} from "next/router";
 
 
-export default function products() {
+export default function Products() {
     const router = useRouter()
     const dispatch = useDispatch()
     const products1 = useSelector((state)=> state.products.products)
@@ -17,16 +17,9 @@ export default function products() {
         router.push('/products/1/10')
     },[])
     useEffect(() => {
-        console.log('lika')
         dispatch(getProducts())
-        console.log(products1)
-
     },[])
 
-
-
-
-    const arr = []
 
     return (
         loading === 'loading' ? <div><h1>vay qu ara</h1></div> : <>

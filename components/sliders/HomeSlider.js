@@ -1,8 +1,5 @@
 export function HomeSlider({chek, radio2, xClas}) {
 
-
-    console.log('slideri ej')
-
     return(
         <section className="home-slider">
             <div className="slider2">

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {myAxios} from "../../utils/request";
+import {forgotPasswordReq, myAxios} from "../../utils/request";
 import {useSelector} from "react-redux";
 
 const ForgotPassword = () => {
@@ -29,20 +29,7 @@ const ForgotPassword = () => {
                 display: 'hide',
                 text: ''
             })
-            const body = {
-                "email": email
-            }
-            try {
-                const config = {
-                    method: 'post',
-                    url: `https://420.canamaster.net/customer/auth/reset-password`,
-                    data:body
-                };
-                const res = await myAxios(config)
-                console.log(res.data)
-            }catch (err){
-                console.log(err)
-            }
+            await forgotPasswordReq(email)
         }
     }
 
@@ -65,7 +52,7 @@ const ForgotPassword = () => {
                     <button className='login-btn' onClick={handleSubmit}>Reset password</button>
                 </div>
                 <div className={'forgot-password-right'}>
-                    <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/page/forgot_password.svg" alt=""/>
+                    <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/page/forgot_password.svg" alt="finger image"/>
                 </div>
             </div>
 

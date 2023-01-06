@@ -1,18 +1,14 @@
 import {Product} from "../../components/populiar-product/Product";
 import Link from "next/link";
 import {productAdapter} from "../../utils/adaptors";
-import {myAxios} from "../../utils/request";
+import {getProductsReq} from "../../utils/request";
 
 export async function getServerSideProps(context) {
     const [offset= 1, limit] = context.params.id
 
     //todo pagination dzel vor 0 cheta
-    const config = {
-        method: 'get',
-        url: `https://420.canamaster.net/api/v1/products/popular/${offset}/${limit}`,
-        headers:{"Accept-Encoding": "gzip,deflate,compress"}
-    };
-    const data = await myAxios(config)
+
+    const data = await getProductsReq(offset, limit)
     const res = data.data
     return {
         props: {
@@ -23,8 +19,8 @@ export async function getServerSideProps(context) {
     }
 }
 
-const pagination = ({data, page, limit}) => {
-    console.log(data)
+const Pagination = ({data, page, limit}) => {
+
     function scrollSmooth() {
         window.scrollTo({top: 0, behavior: "smooth"});
     }
@@ -98,4 +94,4 @@ const pagination = ({data, page, limit}) => {
     )
 }
 
-export default pagination;
+export default Pagination;

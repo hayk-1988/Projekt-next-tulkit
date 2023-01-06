@@ -4,7 +4,7 @@ import {myAxios, registrationReq} from "../../utils/request";
 
 
 export function Registration() {
-    console.log('registratia')
+
 
     const [check, setCheck] = useState(false)
 

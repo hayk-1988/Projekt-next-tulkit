@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export function Cart({children, total}) {
 
-    // console.log('cart')
+
     return (
         <div className="cart-page">
 
