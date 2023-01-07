@@ -47,7 +47,7 @@ const Checkout = ({order, cartItems}) => {
                     }
 
                 </div>
-                <button onClick={order} className={"product-card__add-btn"}>Place on Order</button>
+                <button onClick={order} className={s['product-card__add-btn']}>Place on Order</button>
             </div>
         </div>
     );

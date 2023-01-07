@@ -1,6 +1,6 @@
 import {SliderProduct} from "./SliderProduct";
 import {useRef, useState} from "react";
-
+import s from './Sliders.module.css'
 
 export function HomeSlider2() {
 
@@ -81,16 +81,16 @@ export function HomeSlider2() {
 
     return (
         <>
-            <h1 className="timer-product__header">Daily Best Sells</h1>
-            <div className="home-slider-2" ref={prodRef}>
-                <div className="home-slider-2__side-banner">
+            <h1 className={s['timer-product__header']}>Daily Best Sells</h1>
+            <div className={s['home-slider-2']} ref={prodRef}>
+                <div className={s['home-slider-2__side-banner']}>
                     <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/banner/banner-4.png" alt="banner-4"/>
                 </div>
 
-                <div className="home-slider-2__slide">
+                <div className={s['home-slider-2__slide']}>
 
-                    <div className="home-slider-2__slide-visible">
-                        <button className="btn-slider btn--left" onClick={(e) => {
+                    <div className={s['home-slider-2__slide-visible']}>
+                        <button className={`${s['btn-slider']} ${s['btn--left']}`} onClick={(e) => {
                             let k = prods.shift()
                             setProds([
                                 ...prods,
@@ -99,10 +99,10 @@ export function HomeSlider2() {
                         }}>
                             {'<'}
                         </button>
-                        <div className="inner-slider">
+                        <div className={s['inner-slider']}>
                             {prods}
                         </div>
-                        <button className="btn-slider btn--right" onClick={(e) => {
+                        <button className={`${s['btn-slider']} ${s['btn--right']}`}  onClick={(e) => {
                             let k = prods.pop()
                             setProds([
                                 k,

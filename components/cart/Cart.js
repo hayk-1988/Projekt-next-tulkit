@@ -1,17 +1,16 @@
 
 import Link from "next/link";
-
+import s from '../../styles/Cart.module.css'
 export function Cart({children, total}) {
 
 
     return (
         <div className="cart-page">
 
-            {/*<button onClick={handleClick}>Sign Out</button>*/}
-            <div className="cart-page__content">
-                <div className="shop-cart">
-                    <div className="shop-cart__header">
-                        <div className="shop-cart__header-left">
+            <div className={s['cart-page__content']}>
+                <div className={s['shop-cart']}>
+                    <div className={s['shop-cart__header']}>
+                        <div className={s['shop-cart__header-left']}>
                             <h2>Your Cart</h2>
                             <h3>There are 3 products in your cart</h3>
                         </div>
@@ -19,10 +18,10 @@ export function Cart({children, total}) {
                             Clear Cart
                         </p>
                     </div>
-                    <div className="shop-cart__products">
-                        <div className="shop-cart__description">
-                            <p className="shop-cart__description-p1">Product</p>
-                            <div className="shop-cart__description-p2">
+                    <div className={s['shop-cart__products']}>
+                        <div className={s['shop-cart__description']}>
+                            <p className={s['shop-cart__description-p1']}>Product</p>
+                            <div className={s['shop-cart__description-p2']}>
                                 <p>Unit Price</p>
                                 <p>Quantity</p>
                                 <p>Subtotal</p>
@@ -30,33 +29,33 @@ export function Cart({children, total}) {
                         </div>
                         {children}
                     </div>
-                    <div className="shop-cart__footer">
+                    <div className={s['shop-cart__footer']}>
                        <Link href={'/cart/checkout'}> <button>Continue Shopping</button></Link>
                         <button>Update Cart</button>
                     </div>
                 </div>
-                <div className="cart-page__total-price-bar">
-                    <div className="subtotal-bar">
+                <div className={s['cart-page__total-price-bar']}>
+                    <div className={s['subtotal-bar']}>
                         <span>Subtotal</span>
-                        <p className="subtotal">{total} $</p>
+                        <p className={s['subtotal']}>{total} $</p>
                     </div>
-                    <div className="subtotal-bar">
+                    <div className={s['subtotal-bar']}>
 
                     </div>
-                    <div className="subtotal-bar">
+                    <div className={s['subtotal-bar']}>
                         <span>Shipping</span>
                         <p>Free</p>
                     </div>
-                    <div className="subtotal-bar">
+                    <div className={s['subtotal-bar']}>
                         <span>Estimate for</span>
                         <p>United Kingdom</p>
                     </div>
-                    <div className="subtotal-bar ">
+                    <div className={s['subtotal-bar']}>
 
                     </div>
-                    <div className="subtotal-bar">
+                    <div className={s['subtotal-bar']}>
                         <span>Total</span>
-                        <p className="subtotal">{total} $</p>
+                        <p className={s['subtotal']}>{total} $</p>
                     </div>
                     <button>Proceed To CheckOut</button>
                 </div>

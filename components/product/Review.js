@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Link from "next/link";
 import {postReviewReq} from "../../utils/request";
+import s from './Product.module.css'
 
 const Review = ({reviews, product}) => {
     const [review, setReview] = useState('')
@@ -9,7 +10,7 @@ const Review = ({reviews, product}) => {
         await postReviewReq(product.id, review)
     }
     return (
-        <div className='reviews'>
+        <div className={s['reviews']}>
             <h2>Reviews</h2>
             <pre>
                     <code>

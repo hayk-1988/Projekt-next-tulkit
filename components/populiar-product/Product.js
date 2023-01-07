@@ -3,7 +3,7 @@ import {RatingStars} from "./RatingStars";
 import {PriceBar} from "./PriceBar";
 import {CartSVG} from "../svg/CartSVG";
 import {WishlistSVG} from "../svg/WishlistSVG";
-
+import s from './Products.module.css'
 
 export function Product({ price, image, id, children, val}) {
     let data = {
@@ -12,38 +12,38 @@ export function Product({ price, image, id, children, val}) {
     }
 
     return (
-        <div className="product-card">
+        <div className={s['product-card']}>
             <div>{val}</div>
-            <p className="suggestions">{'badgeLabel'}</p>
-            <img className="product-card__img-1" src={image} alt={val}/>
-            <img className="product-card__img-2" src={image} alt="product-1-2"/>
-            <div className="action-bar">
-                <Button className={'btn-svg'} svg={<WishlistSVG/>}/>
-                <Button className={'btn-svg'} svg={<WishlistSVG/>}/>
-                <Button className={'btn-svg'} svg={<WishlistSVG/>}/>
+            <p className={s['suggestions']}>{'badgeLabel'}</p>
+            <img className={s['product-card__img-1']} src={image} alt={val}/>
+            <img className={s['product-card__img-2']} src={image} alt="product-1-2"/>
+            <div className={s['action-bar']}>
+                <Button className={s['btn-svg']} svg={<WishlistSVG/>}/>
+                <Button className={s['btn-svg']} svg={<WishlistSVG/>}/>
+                <Button className={s['btn-svg']} svg={<WishlistSVG/>}/>
 
-                <div className="action-bar__tooltip-1">
+                <div className={s['action-bar__tooltip-1']}>
                     Add To Wishlist
                 </div>
-                <div className="action-bar__tooltip-2">
+                <div className={s['action-bar__tooltip-2']}>
                     Compare
                 </div>
             </div>
-            <div className="product-description">
-                <p className="product-card__category">{'category'}</p>
+            <div className={s['product-description']}>
+                <p className={s['product-card__category']}>{'category'}</p>
                 {children}
                 <RatingStars ratingRevieWs={'(4.0)'}/>
 
-                <p className="product-card__manufacturer-bar">By
-                    <a className="manufacturer"
+                <p className={s['product-card__manufacturer-bar']}>By
+                    <a className={s['manufacturer']}
                        href="#">{'manufacturer'}</a>
                 </p>
-                <div className="trade-bar">
+                <div className={s['trade-bar']}>
 
                     <PriceBar price={price} oldPrice={val}/>
                     <Button
                         data={data}
-                        className={"product-card__add-btn"}
+                        className={s['product-card__add-btn']}
                         text={'Add'}
                         svg={<CartSVG/>}
                     />

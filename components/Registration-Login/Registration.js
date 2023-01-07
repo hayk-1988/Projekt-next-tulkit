@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {RegHeader} from "./RegHeader";
-import {myAxios, registrationReq} from "../../utils/request";
-
+import {registrationReq} from "../../utils/request";
+import s from './RegLog.module.css'
 
 export function Registration() {
 
@@ -82,23 +82,23 @@ export function Registration() {
 
     return (
         <div>
-            <div className='registration-page'>
-                <div className="test-login">
+            <div className={s['registration-page']}>
+                <div className={s['test-login']}>
                     <RegHeader/>
                     <input type="email" placeholder='Email' value={email} onChange={handlerEmail}/>
                     <input id={wrongInput.clasName} type={!check ? "password" : 'text'} placeholder='Password'
                            value={password} onChange={handlerPassword}/>
                     <input type={!check ? "password" : 'text'} placeholder='Confirm Password' value={confPassword}
                            onChange={handlerConfPassword}/>
-                    <div className="security-bar">
+                    <div className={s['security-bar']}>
                         <input type="text" placeholder='Security Code' value={secCod} onChange={handlerSecCode}/>
-                        <div className="security-cod">{784756}</div>
+                        <div className={s['security-cod']}>{784756}</div>
                     </div>
-                    <div className='show-password'><input type="checkbox" checked={check} onChange={(e) => {
+                    <div className={s['show-password']}><input type="checkbox" checked={check} onChange={(e) => {
                         setCheck(!check)
                     }}/><p>show-password</p></div>
 
-                    <div className={`show-problems ${viz.display}`}>
+                    <div className={`${s['show-problems']} ${s[`${viz.display}`]}`}>
                         {viz.text}
                     </div>
                     <button onClick={handleSubmit}>Submit & Register</button>

@@ -1,37 +1,40 @@
+
+import s from './Footer.module.css'
+
 export function Footer() {
 
     return (
-        <div className="footer">
-            <div className="footer__trade-bar">
-                <div className="footer__icon">
+        <div className={s['footer']}>
+            <div className={s['footer__trade-bar']}>
+                <div className={s['footer__icon']}>
                     <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/theme/icons/icon-1.svg" alt="icon 1"/>
                     <div>
                         <h2>Best prices & offers</h2>
                         <p>Orders $50 or more</p>
                     </div>
                 </div>
-                <div className='footer__icon'>
+                <div className={s['footer__icon']}>
                     <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/theme/icons/icon-2.svg" alt="icon 2"/>
                     <div>
                         <h2>Free delivery</h2>
                         <p>24/7 amazing services</p>
                     </div>
                 </div>
-                <div className="footer__icon">
+                <div className={s['footer__icon']}>
                     <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/theme/icons/icon-3.svg" alt="icon 3"/>
                     <div>
                         <h2>Great daily deal</h2>
                         <p>When you sign up</p>
                     </div>
                 </div>
-                <div className="footer__icon">
+                <div className={s['footer__icon']}>
                     <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/theme/icons/icon-4.svg" alt="icon 4"/>
                     <div>
                         <h2>Wide assortment</h2>
                         <p>Mega Discounts</p>
                     </div>
                 </div>
-                <div className="footer__icon">
+                <div className={s['footer__icon']}>
                     <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/theme/icons/icon-5.svg" alt="icon 5"/>
                     <div>
                         <h2>Easy returns</h2>
@@ -39,9 +42,9 @@ export function Footer() {
                     </div>
                 </div>
             </div>
-            <div className="footer-main">
-                <div className="footer-main__col footer-main__col-logo">
-                    <img className='footer-logo'
+            <div className={s['footer-main']}>
+                <div className={`${s['footer-main__col']} ${s['footer-main__col-logo']}`}>
+                    <img className={s['footer-logo']}
                          src="https://wp.alithemes.com/html/nest/demo/assets/imgs/theme/logo.svg" alt="logo"/>
                     <p>Awesome grocery store website template</p>
                     <p>Address: 5171 W Campbell Ave undefined Kent, Utah 53127 United States</p>
@@ -49,7 +52,7 @@ export function Footer() {
                     <p>Email:sale@Nest.com</p>
                     <p>Hours:10:00 - 18:00, Mon - Sat</p>
                 </div>
-                <div className="footer-main__col">
+                <div className={s['footer-main__col']}>
                     <h2>Company</h2>
                     <p>About Us</p>
                     <p>Delivery Information</p>
@@ -59,7 +62,7 @@ export function Footer() {
                     <p>Support Center</p>
                     <p>Careers</p>
                 </div>
-                <div className="footer-main__col">
+                <div className={s['footer-main__col']}>
                     <h2>Account</h2>
                     <p>Sign In</p>
                     <p>View Cart</p>
@@ -69,7 +72,7 @@ export function Footer() {
                     <p>Support Center</p>
                     <p>Careers</p>
                 </div>
-                <div className="footer-main__col">
+                <div className={s['footer-main__col']}>
                     <h2>Corporate</h2>
                     <p>Become a Vendor</p>
                     <p>Affiliate Program</p>
@@ -79,7 +82,7 @@ export function Footer() {
                     <p>Support Center</p>
                     <p>Careers</p>
                 </div>
-                <div className="footer-main__col">
+                <div className={s['footer-main__col']}>
                     <h2>Popular</h2>
                     <p>About Us</p>
                     <p>Delivery Information</p>
@@ -89,7 +92,7 @@ export function Footer() {
                     <p>Support Center</p>
                     <p>Careers</p>
                 </div>
-                <div className="footer-main__col footer-main__col-logo">
+                <div className={`${s['footer-main__col']} ${s['footer-main__col-logo']}`}>
                     <h2>Install App</h2>
                     <p>From App Store or Google Play</p>
                     <div>
@@ -104,13 +107,13 @@ export function Footer() {
                 </div>
 
             </div>
-            <div className="footer__contact-bar">
-                <div className="footer__part">
+            <div className={s['footer__contact-bar']}>
+                <div className={s['footer__part']}>
                     <p>© 2022, Nest - HTML Ecommerce Template<br/>
                         All rights reserved</p>
                 </div>
-                <div className="footer__part footer__part-logo">
-                    <div className='phone-logo'>
+                <div className={`${s['footer__part']} ${s['footer__part-logo']}`}>
+                    <div className={s['phone-logo']}>
                         <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/theme/icons/phone-call.svg"
                              alt="phon"/>
                         <div>
@@ -118,7 +121,7 @@ export function Footer() {
                             <span>Working 8:00 - 22:00</span>
                         </div>
                     </div>
-                    <div className='phone-logo'>
+                    <div className={s['phone-logo']}>
                         <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/theme/icons/phone-call.svg"
                              alt="phon"/>
                         <div>
@@ -127,7 +130,7 @@ export function Footer() {
                         </div>
                     </div>
                 </div>
-                <div className="footer__part">
+                <div className={s['footer__part']}>
                     <p>© 2022, Nest - HTML Ecommerce Template<br/>
                         All rights reserved</p>
                 </div>

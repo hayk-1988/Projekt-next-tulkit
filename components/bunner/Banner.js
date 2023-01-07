@@ -1,5 +1,5 @@
 import {Button} from "./Button";
-
+import s from './Banner.module.css'
 export function Banner(props) {
     const {
         pic,
@@ -7,12 +7,12 @@ export function Banner(props) {
     } = props
 
     return (
-        <div className="banner">
-            <div className="banner-img ">
+        <div className={s.banner}>
+            <div className={`${s['banner-img'] }`}>
                 <img src={pic} alt="banner 1"/>
-                <div className="banner__details">
-                    <h4 className="banner__details__text">{description}</h4>
-                    <Button className={"banner__btn"} buttonDescription={'Shop Now '}/>
+                <div className={s.banner__details}>
+                    <h4 className={s.banner__details__text}>{description}</h4>
+                    <Button className={s.banner__btn} buttonDescription={'Shop Now '}/>
                 </div>
             </div>
         </div>

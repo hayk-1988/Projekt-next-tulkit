@@ -128,7 +128,7 @@ body {
     font-family: 'Quicksand', sans-serif;
 }
 
-.opshi {
+.general {
     width: 98% ;
     margin: 0 auto;
     display: flex;
@@ -309,8 +309,6 @@ li {
     display: flex;
     align-items: center;
     width: 100%;
-
-
 }
 
 .logo {
@@ -974,14 +972,15 @@ img {
     /*padding: .5rem 1rem 0.3rem;*/
 }
 
+
+
+svg path {
+    fill: #3BB77E;
+}
 .btn-svg {
     width: 100%;
     padding: 0.3rem 0 0;
     border: .04rem solid #BCE3C9;
-}
-
-svg path {
-    fill: #3BB77E;
 }
 
 .btn-svg:hover path {
@@ -992,14 +991,7 @@ svg path {
     visibility: visible;
 }
 
-.product-card:hover .product-card__img-2 {
-    animation: anim-product-cart-img 0.8s 0s ease-in forwards;
-}
 
-.product-card:hover .product-card__img-1 {
-    transform: scale(1.04);
-    visibility: hidden;
-}
 
 @keyframes anim-product-cart-img {
     100% {
@@ -1021,13 +1013,20 @@ svg path {
     position: absolute;
     left: 0;
 }
+.product-card:hover .product-card__img-1 {
+    transform: scale(1.04);
+    visibility: hidden;
+}
+
 
 .product-card__img-1 {
     transition: 0.8s ease-in 0s;
     width: 80%;
     height: 100%;
 }
-
+.product-card:hover .product-card__img-2 {
+    animation: anim-product-cart-img 0.8s 0s ease-in forwards;
+}
 .product-card__img-2 {
     visibility: hidden;
     position: absolute;
@@ -1253,8 +1252,6 @@ svg path {
     margin: 1rem 0;
 }
 
-.home-slider-2__slide {
-}
 
 .inner-slider {
     display: flex;
@@ -1732,13 +1729,11 @@ svg path {
     margin-top: 2rem;
 }
 
-
 .shop-cart {
     width: 80rem;
     display: flex;
     flex-direction: column;
 }
-
 
 .shop-cart__header {
     display: flex;
@@ -1873,11 +1868,6 @@ img {
 }
 
 .rating-bar {
-    display: flex;
-    align-items: center;
-}
-
-.trade-bar {
     display: flex;
     align-items: center;
 }
@@ -2322,218 +2312,218 @@ a {
 }
 
 
-@media (max-width: 600px) {
-    .opshi {
-        display: grid;
-    }
-    .header {
-        display: none;
-    }
-
-    .mobile__header {
-        /*background: #7e7e7e;*/
-        /*border-bottom: solid 1px #c2c2c2;*/
-        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 6px -1px, rgba(0, 0, 0, 0.06) 0 2px 4px -1px;
-        padding: 20px;
-        display: grid;
-        /*grid-template-columns: 30px minmax(150px, 1fr)  50px;*/
-        grid-template: 1fr / 200px minmax(100px, 1fr ) 120px 120px;
-        align-items: center;
-    }
-    .mobile__menu {
-        /*background: #61dafb;*/
-        font-size: 50px;
-        margin: auto;
-    }
-    .mobile__logo {
-        margin: auto;
-        /*background: #3bb77e;*/
-        /*grid-area: 2/3;*/
-    }
-    .mobile__wishlist {
-        margin: auto;
-        /*background: #253d4e;*/
-    }
-    .mobile__cart{
-        margin: auto;
-    }
-
-                                 /*  Headeric nerqev   SLIDER 1  */
-    .home-slider{
-        display: grid;
-        padding: 20px;
-        /*grid-template-columns: minmax(100px, 1fr);*/
-        /*grid-gap: 2rem;*/
-        /*margin: 2rem;*/
-    }
-    .home-slider img{
-        height: 70rem;
-    }
-    .slider-content{
-
-    }
-    .subscribe{
-        top: 57%;
-    }
-    .home-slider__input{
-        padding: 3rem 20rem 3rem 5rem;
-        font-size: 3rem;
-    }
-    .slider-btn {
-        padding: 3rem 5rem;
-        border-radius: 6rem;
-        border: none;
-        background: #3BB77E;
-        color: white;
-        font-size: 3rem;
-        font-weight: 500;
-        transform: translateX(-9rem);
-    }
-    .radio{
-        font-size: 30px;
-        left: 47%;
-    }
-    .radio input{
-        margin: 25px;
-        transform:scale(3.3);
-        opacity:0.9;
-        cursor:pointer;
-    }
-
-                                  /*  Sloderic  nerqev   BANNERS   */
-
-    .banners {
-        display: grid;
-        grid-template: 1fr 1fr 1fr / 1fr;
-
-    }
-    .banner-img{
-        border-radius: 4rem;
-        width: 100%;
-    }
-    .banner{
-        padding: 2rem 10rem;
-        width: 100%;
-        /*background: #3bb77e;*/
-    }
-    .banner__details{
-        width: 55%;
-        font-size: 50px;
-        margin-left: 7rem;
-    }
-    .banner__details__text{
-        margin-bottom: 5.5rem;
-    }
-
-    .banner__btn{
-        border-radius: 1rem;
-        font-size: 40px;
-        padding: 2.7rem 3.8rem 2.7rem 3.8rem;
-    }
-
-                                        /*Banerneric heto*/
-    .timer-product__header{
-        color: #253d4e;
-        font-weight: 800;
-        display: block;
-        font-size: 50px;
-        padding: 0 10rem;
-        /*box-shadow: rgba(0, 0, 0, 0.1) 0 4px 6px -1px, rgba(0, 0, 0, 0.06) 0 2px 4px -1px;*/
-        /*background: #3bb77e;*/
-    }
-
-    .products{
-        display: grid;
-        grid-template: 1fr 1fr 1fr / 1fr;
-        grid-gap: 2rem;
-        margin: 2rem;
-        padding: 5rem;
-
-        /*grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));*/
-        /*grid-template: 1fr/ repeat(auto-fill, minmax(auto, 1fr));*/
-    }
-    /*
-    .products {
-     margin: auto;
-     width: 100%;
-/*   padding: 3rem;*/
-/*    display: flex;*/
-/*    flex-wrap: wrap;*/
-/*    justify-content: space-evenly;*/
-/*}*/
-
-    .product-card{
-        width: 100%;
-        border-radius: 7.5rem;
-        /*grid-area: -1/1;*/
-    }
-    .suggestions{
-        width: 20rem;
-        padding: 4.6rem 2rem;
-        font-size: 30px;
-        color: #FFF3FF;
-        border-top-left-radius: 7.5rem;
-        border-bottom-right-radius: 7.5rem;
-    }
-    .product-card__img-1{
-        margin: 20rem 0 0 0;
-        width: 70%;
-    }
-    .product-card__img-2{
-        margin: 20rem 0 0 0;
-        width: 70%;
-    }
-    .action-bar{
-        top: 37%;
-    }
-    .product-card__category{
-
-    }
-    .product-description{
-        padding: 5rem;
-        min-width: 80%;
-    }
-    .description{
-        font-size: 50px;
-
-    }
-    .new-price{
-        font-size: 50px;
-    }
-    .rating-reviews{
-        font-size: 4rem;
-    }
-    .product-card__manufacturer-bar{
-        font-size: 45px;
-    }
-    .product-card__add-btn{
-        border-radius: 1.5rem;
-        font-size: 50px;
-        padding: 3.2rem 4rem;
-    }
-
-    .product-card__add-btn svg {
-        width: 8.4rem;
-        height: 5rem;
-        margin-bottom: 0.35rem;
-    }
-
-
-
-    .home-slider-2{
-        display: grid;
-        margin: auto;
-    }
-
-    .timer-products{
-        display: grid;
-        grid-template: 1fr / 1fr 1fr 1fr 1fr;
-    }
-
-    .footer{
-        display: none;
-    }
-}
+//@media (max-width: 600px) {
+//    .opshi {
+//        display: grid;
+//    }
+//    .header {
+//        display: none;
+//    }
+//
+//    .mobile__header {
+//        /*background: #7e7e7e;*/
+//        /*border-bottom: solid 1px #c2c2c2;*/
+//        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 6px -1px, rgba(0, 0, 0, 0.06) 0 2px 4px -1px;
+//        padding: 20px;
+//        display: grid;
+//        /*grid-template-columns: 30px minmax(150px, 1fr)  50px;*/
+//        grid-template: 1fr / 200px minmax(100px, 1fr ) 120px 120px;
+//        align-items: center;
+//    }
+//    .mobile__menu {
+//        /*background: #61dafb;*/
+//        font-size: 50px;
+//        margin: auto;
+//    }
+//    .mobile__logo {
+//        margin: auto;
+//        /*background: #3bb77e;*/
+//        /*grid-area: 2/3;*/
+//    }
+//    .mobile__wishlist {
+//        margin: auto;
+//        /*background: #253d4e;*/
+//    }
+//    .mobile__cart{
+//        margin: auto;
+//    }
+//
+//                                 /*  Headeric nerqev   SLIDER 1  */
+//    .home-slider{
+//        display: grid;
+//        padding: 20px;
+//        /*grid-template-columns: minmax(100px, 1fr);*/
+//        /*grid-gap: 2rem;*/
+//        /*margin: 2rem;*/
+//    }
+//    .home-slider img{
+//        height: 70rem;
+//    }
+//    .slider-content{
+//
+//    }
+//    .subscribe{
+//        top: 57%;
+//    }
+//    .home-slider__input{
+//        padding: 3rem 20rem 3rem 5rem;
+//        font-size: 3rem;
+//    }
+//    .slider-btn {
+//        padding: 3rem 5rem;
+//        border-radius: 6rem;
+//        border: none;
+//        background: #3BB77E;
+//        color: white;
+//        font-size: 3rem;
+//        font-weight: 500;
+//        transform: translateX(-9rem);
+//    }
+//    .radio{
+//        font-size: 30px;
+//        left: 47%;
+//    }
+//    .radio input{
+//        margin: 25px;
+//        transform:scale(3.3);
+//        opacity:0.9;
+//        cursor:pointer;
+//    }
+//
+//                                  /*  Sloderic  nerqev   BANNERS   */
+//
+//    .banners {
+//        display: grid;
+//        grid-template: 1fr 1fr 1fr / 1fr;
+//
+//    }
+//    .banner-img{
+//        border-radius: 4rem;
+//        width: 100%;
+//    }
+//    .banner{
+//        padding: 2rem 10rem;
+//        width: 100%;
+//        /*background: #3bb77e;*/
+//    }
+//    .banner__details{
+//        width: 55%;
+//        font-size: 50px;
+//        margin-left: 7rem;
+//    }
+//    .banner__details__text{
+//        margin-bottom: 5.5rem;
+//    }
+//
+//    .banner__btn{
+//        border-radius: 1rem;
+//        font-size: 40px;
+//        padding: 2.7rem 3.8rem 2.7rem 3.8rem;
+//    }
+//
+//                                        /*Banerneric heto*/
+//    .timer-product__header{
+//        color: #253d4e;
+//        font-weight: 800;
+//        display: block;
+//        font-size: 50px;
+//        padding: 0 10rem;
+//        /*box-shadow: rgba(0, 0, 0, 0.1) 0 4px 6px -1px, rgba(0, 0, 0, 0.06) 0 2px 4px -1px;*/
+//        /*background: #3bb77e;*/
+//    }
+//
+//    .products{
+//        display: grid;
+//        grid-template: 1fr 1fr 1fr / 1fr;
+//        grid-gap: 2rem;
+//        margin: 2rem;
+//        padding: 5rem;
+//
+//        /*grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));*/
+//        /*grid-template: 1fr/ repeat(auto-fill, minmax(auto, 1fr));*/
+//    }
+//    /*
+//    .products {
+//     margin: auto;
+//     width: 100%;
+///*   padding: 3rem;*/
+///*    display: flex;*/
+///*    flex-wrap: wrap;*/
+///*    justify-content: space-evenly;*/
+///*}*/
+//
+//    .product-card{
+//        width: 100%;
+//        border-radius: 7.5rem;
+//        /*grid-area: -1/1;*/
+//    }
+//    .suggestions{
+//        width: 20rem;
+//        padding: 4.6rem 2rem;
+//        font-size: 30px;
+//        color: #FFF3FF;
+//        border-top-left-radius: 7.5rem;
+//        border-bottom-right-radius: 7.5rem;
+//    }
+//    .product-card__img-1{
+//        margin: 20rem 0 0 0;
+//        width: 70%;
+//    }
+//    .product-card__img-2{
+//        margin: 20rem 0 0 0;
+//        width: 70%;
+//    }
+//    .action-bar{
+//        top: 37%;
+//    }
+//    .product-card__category{
+//
+//    }
+//    .product-description{
+//        padding: 5rem;
+//        min-width: 80%;
+//    }
+//    .description{
+//        font-size: 50px;
+//
+//    }
+//    .new-price{
+//        font-size: 50px;
+//    }
+//    .rating-reviews{
+//        font-size: 4rem;
+//    }
+//    .product-card__manufacturer-bar{
+//        font-size: 45px;
+//    }
+//    .product-card__add-btn{
+//        border-radius: 1.5rem;
+//        font-size: 50px;
+//        padding: 3.2rem 4rem;
+//    }
+//
+//    .product-card__add-btn svg {
+//        width: 8.4rem;
+//        height: 5rem;
+//        margin-bottom: 0.35rem;
+//    }
+//
+//
+//
+//    .home-slider-2{
+//        display: grid;
+//        margin: auto;
+//    }
+//
+//    .timer-products{
+//        display: grid;
+//        grid-template: 1fr / 1fr 1fr 1fr 1fr;
+//    }
+//
+//    .footer{
+//        display: none;
+//    }
+//}
 
 
                                 /*SLIDERI MATOV SLID ANELU MASY*/
@@ -2585,6 +2575,7 @@ a {
     border-radius: 50%;
 }
 .show-password{
+
 }
 .loading{
     margin: 3% 30%;

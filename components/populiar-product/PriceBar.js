@@ -1,14 +1,14 @@
 
-
+import s from './Products.module.css'
 
 export function PriceBar({price, oldPrice}){
 
     return(
-        <div className="price-bar">
-            <p className="new-price">
+        <div className={s['price-bar']}>
+            <p className={s['new-price']}>
                 {price}
             </p>
-            <p className="old-price">
+            <p className={s['old-price']}>
                 {oldPrice}
             </p>
         </div>

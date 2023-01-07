@@ -1,0 +1,42 @@
+
+.timer-products__img {
+    position: relative;
+    width: 31rem;
+    border-radius: 1rem;
+    /*overflow: hidden;*/
+}
+
+.timer-products__img img {
+    border-radius: 1rem;
+}
+.timer {
+    display: flex;
+    position: absolute;
+    width: 28rem;
+    height: 7rem;
+    bottom: 43%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.timer-time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 6rem;
+    border-radius: .5rem;
+    height: 100%;
+    background: #fff;
+    margin-right: 1.3rem;
+    font-size: 2rem;
+}
+
+.timer-time p {
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+.timer-time span {
+    font-weight: 700;
+    color: #3BB77E;
+}

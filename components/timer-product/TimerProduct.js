@@ -3,8 +3,8 @@ import {Button} from "../populiar-product/Button";
 import {RatingStars} from "../populiar-product/RatingStars";
 import {memo, useState} from "react";
 import {CartSVG} from "../svg/CartSVG";
-
-
+import productStyle from '../populiar-product/Products.module.css'
+import timerProdStyle from './TimerProd.module.css'
 export default memo(function TimerProduct({img, price, oldPrice, deadLine}) {
 
     const [time, setTime] = useState({
@@ -26,7 +26,7 @@ export default memo(function TimerProduct({img, price, oldPrice, deadLine}) {
             m: minutes,
             s: seconds
         })
-        if (t <= 0){
+        if (t <= 0) {
             setTime({
                 d: '00',
                 h: '00',
@@ -39,33 +39,34 @@ export default memo(function TimerProduct({img, price, oldPrice, deadLine}) {
 
 
     return (
-        <div className="timer-products__img">
-            <div className="timer">
+        <div className={timerProdStyle['timer-products__img']}>
+            <div className={timerProdStyle['timer']}>
                 <div key={Math.random() + 'fidc121' + Date.now()}
-                     className="timer-time"><span className="time"></span>{time.d}<p>Days</p></div>
+                     className={timerProdStyle['timer-time']}><span className="time"></span>{time.d}<p>Days</p></div>
                 <div key={Math.random() + 'fidc122' + Date.now()}
-                     className="timer-time"><span className="time"></span>{time.h}<p>Hours</p></div>
+                     className={timerProdStyle['timer-time']}><span className="time"></span>{time.h}<p>Hours</p></div>
                 <div key={Math.random() + 'fidc123' + Date.now()}
-                     className="timer-time"><span className="time"></span>{time.m}<p>Mins</p></div>
+                     className={timerProdStyle['timer-time']}><span className="time"></span>{time.m}<p>Mins</p></div>
                 <div key={Math.random() + 'fidc124' + Date.now()}
-                     className="timer-time"><span className="time"></span>{time.s}<p>Sec</p></div>
+                     className={timerProdStyle['timer-time']}><span className="time"></span>{time.s}<p>Sec</p></div>
             </div>
             <img src={img} alt="banner"/>
             <footer>
-                <div className="product-description">
-                    <p className="description ">Seeds of Change Organic Quinoa, Brown</p>
-                    <div className="rating-bar">
+                <div className={productStyle['product-description']}>
+                    <p className={productStyle['description']}>Seeds of Change Organic Quinoa, Brown</p>
+                    <div className={productStyle['rating-bar']}>
                         <RatingStars/>
 
-                        <span className="rating-reviews">
+                        <span className={productStyle['rating-reviews']}>
                                    (4.0)
                         </span>
                     </div>
-                    <p className="product-card__manufacturer-bar">By <a className="manufacturer"
-                                                                        href="1-Project/day-12-Reactov-shoppi-ejery/src/timer-product/TimerProduct#">NestFood</a></p>
-                    <div className="trade-bar">
+                    <p className={productStyle['product-card__manufacturer-bar']}>By
+                        <a className={productStyle['manufacturer']}
+                           href="1-Project/day-12-Reactov-shoppi-ejery/src/timer-product/TimerProduct#">NestFood</a></p>
+                    <div className={productStyle['trade-bar']}>
                         <PriceBar price={price} oldPrice={oldPrice}/>
-                        <Button className={"product-card__add-btn"}
+                        <Button className={productStyle['product-card__add-btn']}
                                 text={'Add'}
                                 svg={<CartSVG/>}/>
                     </div>

@@ -3,11 +3,10 @@ import {setEmail as setE} from "../../features/user/userSlice";
 import {LogHeader} from "./LogHeader";
 import {useRouter} from "next/router";
 import React, {useEffect, useState} from "react";
-import axios from "axios";
 import Link from "next/link";
 import Logout from "./logout";
 import {loginReq} from "../../utils/request";
-
+import s from './RegLog.module.css'
 
 export function Login() {
     const dispatch = useDispatch()
@@ -98,23 +97,23 @@ export function Login() {
     return (
         <div>
             {token === 'undefined' ? <h1 onClick={logoutHandler}>aoutorizatia anci balbes</h1> :
-                token ? <Logout logoutHandler={logoutHandler}/> : <div className='registration-page'>
-                    <div className="login-img">
+                token ? <Logout logoutHandler={logoutHandler}/> : <div className={s['registration-page']}>
+                    <div className={s['login-img']}>
                         <img src='https://wp.alithemes.com/html/nest/demo/assets/imgs/page/login-1.png' alt=""/>
                     </div>
-                    <div className="test-login">
+                    <div className={s['test-login']}>
                         <LogHeader/>
                         <input type="email" placeholder='Username or Email' value={email} onChange={handlerEmail}/>
                         <input id={wrongInput.clasName} type="password" placeholder='Your password' value={password}
                                onChange={handlerPassword}/>
-                        <div className="security-bar">
+                        <div className={s['security-bar']}>
                             <input type="text" placeholder='Security Code' value={secCod} onChange={handlerSecCode}/>
-                            <div className="security-cod">{784756}</div>
+                            <div className={s['security-cod']}>{784756}</div>
                         </div>
-                        <div className={`show-problems ${err.display}`}>
+                        <div className={`${s['show-problems']} ${s[`${err.display}`]}`}>
                             {err.text}
                         </div>
-                        <button className='login-btn' onClick={handleSubmit}>Log in</button>
+                        <button className={s['login-btn']} onClick={handleSubmit}>Log in</button>
                         <Link href="/login/forgot-password">Forgot password</Link>
                     </div>
                 </div>}

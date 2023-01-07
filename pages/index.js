@@ -11,6 +11,7 @@ import {HomeSlider2} from "../components/sliders/HomeSlider2";
 import ToUp from "../components/to-up";
 import TimerProducts from "../components/timer-product/TimerProducts";
 import {getProductsReq} from "../utils/request";
+import {DownBanner} from "../components/bunner/DownBanner";
 
 export async function getServerSideProps() {
     const resProducts = await getProductsReq(1, 10)
@@ -70,7 +71,7 @@ export default function Home({products}) {
 
             <HomeSlider2/>
             <TimerProducts/>
-
+            <DownBanner/>
         </>
 
     )

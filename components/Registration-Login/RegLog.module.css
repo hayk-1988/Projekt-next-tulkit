@@ -1,0 +1,118 @@
+
+.checkbox-bar {
+    margin: 4rem 0;
+    width: 20rem;
+    display: flex;
+    position: relative;
+
+}
+.checkbox {
+    position: absolute;
+    right: 8.35rem;
+    bottom: -1.1rem;
+    margin-right: 1rem;
+    accent-color: #3bb77e;
+
+}
+.checkbox-label {
+    margin-left: 2rem;
+}
+
+
+.login-img {
+    /*width: 100%;*/
+    border-radius: 2rem;
+    overflow: hidden;
+}
+.test-login a {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
+.test-login {
+    display: flex;
+    flex-direction: column;
+    margin-left: 4rem;
+    width: 70rem;
+    align-items: flex-start;
+}
+
+.security-bar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.security-bar input {
+    padding: 2rem 1rem;
+    width: 15rem;
+    margin-right: 2rem;
+}
+.security-cod {
+    font-size: 2rem;
+    color: white;
+    border-radius: 1rem;
+    padding: 1.3rem 1.6rem;
+    background: #99dcbe;
+}
+.show-problems {
+    display: none;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    color: red;
+    border: 1px solid red;
+    margin: 1rem;
+}
+.registration-page .login-btn:hover {
+    color: #FFF3FF;
+    background: #3bb77e;
+    cursor: pointer;
+}
+
+.registration-page .login-btn {
+    margin-top: 1rem;
+    background: #141e30;
+}
+
+.registration-page {
+    margin: auto;
+    display: flex;
+    align-items: flex-start;
+    width: 90rem;
+    padding: 1rem;
+}
+
+.registration-page button {
+    margin-top: 4rem;
+    background: #3bb77e;
+    padding: 1.5rem 3rem;
+    color: white;
+    border: none;
+    border-radius: 1rem;
+}
+.registration-page .login-btn:hover {
+    color: #FFF3FF;
+    background: #3bb77e;
+    cursor: pointer;
+}
+
+.registration-page .login-btn {
+    margin-top: 1rem;
+    background: #141e30;
+}
+
+.registration-page input {
+    outline-color: #99dcbe;
+
+    border: 1px solid #9d9b9b;
+    margin-bottom: 1rem;
+    padding: 2rem 4rem 2rem 1rem;
+    font-size: 1.4rem;
+    width: 100%;
+    border-radius: 1rem;
+}
+
+.show {
+    display: block;
+}

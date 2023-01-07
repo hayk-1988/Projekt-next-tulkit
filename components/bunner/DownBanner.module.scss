@@ -1,0 +1,99 @@
+
+
+.down-banner {
+  margin-top: 15rem;
+  /*background: #E77FE9;*/
+  position: relative;
+  height: 40rem;
+}
+
+.down-banner img {
+  height: 40rem;
+}
+
+.down-banner .down-banner__img-2 {
+  width: 40%;
+  z-index: 3;
+  position: absolute;
+  right: 3%;
+  bottom: 0;
+  height: 35rem;
+}
+
+.down-banner .subscribe {
+  position: absolute;
+  bottom: 0;
+}
+
+.subscribe {
+  position: absolute;
+  z-index: 3;
+  top: 65%;
+  left: 10%;
+}
+
+
+.home-slider__input {
+  border: none;
+  padding: 2rem 10rem 2rem 4rem;
+  border-radius: 3rem;
+  outline: none;
+}
+
+.slider-btn {
+  padding: 1.8rem 3rem;
+  border-radius: 3rem;
+  border: none;
+  background: #3BB77E;
+  color: white;
+  font-size: var(--font-16);
+  font-weight: 500;
+  transform: translateX(-5rem);
+}
+
+.page-1__content {
+  border-radius: 3rem;
+  overflow: hidden;
+  /*background: black;*/
+  display: flex;
+  align-items: center;
+  position: relative;
+  /*padding: 0.5rem;*/
+  /*width: 100%;*/
+  /*height: 30vh;*/
+}
+
+.down-banner .down-banner__img-2 {
+  width: 40%;
+  z-index: 3;
+  position: absolute;
+  right: 3%;
+  bottom: 0;
+  height: 35rem;
+}
+
+.slider-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 5rem;
+  padding-left: 10rem;
+  /*background: #03e9f4;*/
+  /*width: 76%;*/
+  /*height: 25%;*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  /*bottom: 0;*/
+}
+
+.display-1-text-1 {
+  color: #253D4E;
+  font-size: 6rem;
+  margin-bottom: 1rem;
+}
+.display-1-text-2 {
+  color: #7E7E7E;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
