@@ -1,8 +1,11 @@
 import {SliderProduct} from "./SliderProduct";
 import {useRef, useState} from "react";
 import s from './Sliders.module.css'
+import {motion} from "framer-motion";
+import {forwardRef} from "react";
 
-export function HomeSlider2() {
+// eslint-disable-next-line react/display-name
+export const HomeSlider2 = forwardRef((props, ref) => {
 
 
     const [prods, setProds] = useState([
@@ -80,7 +83,7 @@ export function HomeSlider2() {
     const prodRef = useRef()
 
     return (
-        <>
+        <div ref={ref}>
             <h1 className={s['timer-product__header']}>Daily Best Sells</h1>
             <div className={s['home-slider-2']} ref={prodRef}>
                 <div className={s['home-slider-2__side-banner']}>
@@ -114,6 +117,7 @@ export function HomeSlider2() {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
-}
+})
+export const MHomeSlider2 = motion(HomeSlider2)

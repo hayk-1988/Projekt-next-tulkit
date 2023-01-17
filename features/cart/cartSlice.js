@@ -1,5 +1,5 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
-import {deleteCartProductReq, getCartProductReq} from "./api";
+import {deleteCartProductsReq, getCartProductReq} from "./api";
 
 
 const initialState = {
@@ -12,6 +12,7 @@ export const getCartProducts = createAsyncThunk('cartProducts/getCartProducts',
     async (_, {rejectWithValue, dispatch}) => {
         try {
             const res = await getCartProductReq()
+
             dispatch(setCount(res.data.count))
             dispatch(addCartProducts(res.data.data))
         } catch (err) {
@@ -22,7 +23,7 @@ export const getCartProducts = createAsyncThunk('cartProducts/getCartProducts',
 export const deleteCartProductsFetch = createAsyncThunk('cartProducts/deleteCartProductsFetch',
     async (cartIds, {rejectWithValue, dispatch}) => {
         try {
-            await deleteCartProductReq(cartIds)
+            await deleteCartProductsReq(cartIds)
         } catch (err) {
             console.log(err)
         }
@@ -42,6 +43,9 @@ export const cartProductSliceReducer = createSlice({
         deleteCartProduct(state, acton) {
             --state.count
             state.cartProducts = state.cartProducts?.filter(cProd => cProd.productId !== acton.payload)
+        },
+        clearCart(state, action){
+            state.cartProducts = []
         }
 
     },
@@ -61,6 +65,6 @@ export const cartProductSliceReducer = createSlice({
     }
 })
 
-export const {addCartProducts, setCount, deleteCartProduct} = cartProductSliceReducer.actions
+export const {addCartProducts, setCount, deleteCartProduct, clearCart} = cartProductSliceReducer.actions
 
 export default cartProductSliceReducer.reducer

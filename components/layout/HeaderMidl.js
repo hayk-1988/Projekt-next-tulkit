@@ -41,7 +41,7 @@ export function HeaderMidl() {
                                 <CartSVG width="20" height="20"/>
                             </Link>
                             Cart
-                            <div className={s['cart-count']}>{count}</div>
+                            {count ?  <div className={s['cart-count']}>{count}</div> : <></>}
                         </div>
                         <div className={s['account']}>
                             <AccountSVG/>

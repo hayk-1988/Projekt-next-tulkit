@@ -6,6 +6,18 @@
     width: 110rem;
     /*background: #b73bb1;*/
 }
+.cart__clear-btn{
+    border: solid 0.3px #c0bfc0;
+    border-radius: 1rem;
+    background: #FFF;
+    padding: 0.3rem .5rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+.cart__clear-btn:hover{
+    background: #3bb77e;
+    color: #FFF;
+}
 .cart-page__total-price-bar{
     width: 30rem;
     display: flex;

@@ -3,12 +3,14 @@
 # dependencies
 /node_modules
 /.pnp
+/package-lock.json
+.idea
 .pnp.js
 /.next
 # testing
 /coverage
 
-# next.js
+# nextjest.config1.js
 /.next/
 /out/
 

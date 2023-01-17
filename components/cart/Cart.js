@@ -1,8 +1,7 @@
 
 import Link from "next/link";
 import s from '../../styles/Cart.module.css'
-export function Cart({children, total}) {
-
+export function Cart({children, total, handleDeleteAll}) {
 
     return (
         <div className="cart-page">
@@ -14,9 +13,9 @@ export function Cart({children, total}) {
                             <h2>Your Cart</h2>
                             <h3>There are 3 products in your cart</h3>
                         </div>
-                        <p>
+                        <button onClick={handleDeleteAll} className={s['cart__clear-btn']}>
                             Clear Cart
-                        </p>
+                        </button>
                     </div>
                     <div className={s['shop-cart__products']}>
                         <div className={s['shop-cart__description']}>

@@ -1,7 +1,16 @@
 
+.header{
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: #FFF;
+    width: 100%;
+}
+
 .header-middle {
     display: flex;
     align-items: center;
+
     /*background: #03e9f4;*/
     padding: 2rem 0;
     border-bottom: var(--border);
@@ -96,6 +105,7 @@
     display: flex;
     align-items: flex-end;
     margin: 0 1rem;
+    z-index: 30;
 }
 
 .cart svg {
@@ -103,13 +113,13 @@
 }
 .cart-count{
     position: absolute;
-    top: 5.7rem;
-    right: 14rem;
+    top: 1.7rem;
+    right: 13rem;
     border-radius: 50%;
     padding: 0.3rem;
     background: #3bb77e;
     color: #FFF3FF;
-    border: solid 0.3px #cccccc;
+    /*border: solid 0.3px #cccccc;*/
 }
 .account {
     display: flex;
@@ -127,13 +137,16 @@
 }
 
 
+                                    /*      HEADER NAV     */
+
 
 .header-nav {
-    border: var(--border);
+    width: 100%;
+    border-bottom: var(--border);
     display: flex;
     align-items: center;
     padding: 1rem 0;
-    margin-bottom: 2rem;
+    /*margin-bottom: 2rem;*/
     position: relative;
 }
 
@@ -315,4 +328,15 @@
 }
 .lang_btn:hover {
     background: #ffb730;
+}
+
+.hide{
+    display: none;
+}
+.show{
+    display: block;
+}
+.home-select{
+    /*background: #3bb77e;*/
+    color: #3bb77e;
 }

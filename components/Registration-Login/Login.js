@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {setEmail as setE} from "../../features/user/userSlice";
+import {setEmail as setE} from "../../features/user/userSlice.js";
 import {LogHeader} from "./LogHeader";
 import {useRouter} from "next/router";
 import React, {useEffect, useState} from "react";

@@ -129,8 +129,10 @@ body {
 }
 
 .general {
-    width: 98% ;
-    margin: 0 auto;
+    width: 1270px ;
+
+    //margin: 0 auto;
+    padding: 1rem;
     display: flex;
     min-height: 100vh;
     flex-direction: column;

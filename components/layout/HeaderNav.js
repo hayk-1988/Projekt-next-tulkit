@@ -1,10 +1,38 @@
-import React from "react";
+import React, {useState} from "react";
 import Link from "next/link";
 import {DealsSVG} from "../svg/DealsSVG";
 import {HeadphonesSVG} from "../svg/HeadphonesSVG";
 import s from './Header.module.css'
+import cn from 'classnames'
+const pages = [
+    {path: '/', text: 'Home', className: 'nav-tab'},
+    {path: '/filter', text: 'Filters', className: 'nav-tab'},
+    {path: '/cart', text: 'Shop', className: 'nav-tab'},
+    {path: '/products', text: 'Products', className: 'nav-tab'},
+    {path: '/about', text: 'About', className: 'nav-tab'},
+]
+
+export function MyLink({path, className, text, index, handleSelect}) {
+
+
+    return (
+        <Link id={index} onClick={handleSelect} href={path}>
+            <p className={`${className}`}>{text}</p>
+        </Link>
+    )
+}
 
 export function HeaderNav() {
+    // const [isSelect, setIsSelect] = useState()
+    //
+    //
+    // // const selectClass = cn({
+    // //     [s['nav-tab']]: true,
+    // //     [s['selected']]: index === id
+    // // })
+    // function handleSelect(id) {
+    //
+    // }
 
     return (
         <div className={s['header-nav']}>
@@ -18,24 +46,18 @@ export function HeaderNav() {
                     Deals
                 </p>
 
-                <Link href="/">
-                    <p className={s['nav-tab']}>Home</p>
-                </Link>
-                <Link href={'/filter'}>
-                    <p className={s['nav-tab']}>Filter</p>
-                </Link>
-                <Link href="/cart">
-                    <p className={s['nav-tab']}>Shop</p>
-                </Link>
-                <div className="page-shop">
-                    <p><Link href="/cart">Shop-cart</Link></p>
-                </div>
-                <Link href="/products">
-                    <p className={s['nav-tab']}>Products</p>
-                </Link>
-                <Link href="/about">
-                    <p className={s['nav-tab']}>About</p>
-                </Link>
+                {pages.map((page, i) => {
+                    return (
+                        <MyLink
+                            key={Math.random() + 'pages'}
+                            path={page.path}
+                            className={page.className}
+                            text={page.text}
+                            index={i}
+                        />
+                    )
+                })}
+
 
                 <p className={s['nav-tab']}>Blog</p>
                 <p className={s['nav-tab']}>Page</p>

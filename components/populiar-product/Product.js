@@ -4,15 +4,17 @@ import {PriceBar} from "./PriceBar";
 import {CartSVG} from "../svg/CartSVG";
 import {WishlistSVG} from "../svg/WishlistSVG";
 import s from './Products.module.css'
+import {motion} from "framer-motion";
+import {forwardRef} from "react";
 
-export function Product({ price, image, id, children, val}) {
+export const  Product = forwardRef( ({ price, image, id, children, val}, ref) => {
     let data = {
         quantity: 1,
         productId: id
     }
 
     return (
-        <div className={s['product-card']}>
+        <div ref={ref} className={`${s['product-card']} ${s['']}`}>
             <div>{val}</div>
             <p className={s['suggestions']}>{'badgeLabel'}</p>
             <img className={s['product-card__img-1']} src={image} alt={val}/>
@@ -54,4 +56,8 @@ export function Product({ price, image, id, children, val}) {
         </div>
 
     )
-}
+})
+
+Product.displayName = 'Product'
+
+export const MProduct = motion(Product)

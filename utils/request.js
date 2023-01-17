@@ -172,7 +172,6 @@ export async function addToCartReq(data, token) {
             },
             data
         };
-
         return await axios(config)
     } catch (err) {
         console.log(err)
@@ -200,7 +199,7 @@ export async function registrationReq(data, setViz) {
         data
     };
     try {
-        const data1 = await axios(config)
+        return await axios(config)
     } catch (err) {
         setViz({
             display: 'show',

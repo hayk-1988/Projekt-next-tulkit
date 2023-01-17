@@ -4,7 +4,7 @@ import {productAdapter} from "../../utils/adaptors";
 import {getProductsReq} from "../../utils/request";
 
 export async function getServerSideProps(context) {
-    const [offset= 1, limit] = context.params.id
+    const [offset = 1, limit] = context.params.id
 
     //todo pagination dzel vor 0 cheta
 
@@ -34,6 +34,7 @@ const Pagination = ({data, page, limit}) => {
             scrollSmooth()
         }
     }
+
     function handleIncrement() {
         if (page < pages) {
             scrollSmooth()
@@ -49,7 +50,7 @@ const Pagination = ({data, page, limit}) => {
                     prods?.map(prod => {
                         return (
                             <Product
-                                key={prod.id + Date.now() +'g'}
+                                key={prod.id + Date.now() + 'g'}
                                 name={prod.name}
                                 image={prod.image}
                                 price={prod.price}
@@ -71,17 +72,27 @@ const Pagination = ({data, page, limit}) => {
                     <button className={'product-card__add-btn'} onClick={handleDecrement}>{'<'}</button>
                 </Link>
 
+
                 {+page === 1 ? undefined : <Link href={`/products/1/${limit}`}>
                     <button onClick={scrollSmooth} className={'products-page__pagination'}>{1}</button>
                 </Link>}
-                {+page === +pages ? <button className={'products-page__pagination'}>{pages - 1}</button> : undefined}
+
+                {+page === +pages ? <Link href={`/products/${pages - 1}/${limit}`}>
+                        <button className={'products-page__pagination'}>{pages - 1}</button>
+                    </Link>
+                    : undefined}
+
 
                 <button className={'products-page__pagination-midle'}>{page}</button>
 
-                {+page === 1 ? <button className={'products-page__pagination'}>{2}</button> : undefined}
+                {+page === 1 ? <Link href={`/products/${2}/${limit}`}>
+                        <button className={'products-page__pagination'}>{2}</button>
+                    </Link>
+                    : undefined}
                 {+page === +pages ? undefined : <Link href={`/products/${pages}/${limit}`}>
                     <button onClick={scrollSmooth} className={'products-page__pagination'}>{pages}</button>
                 </Link>}
+
 
                 <Link href={`/products/${+page === +pages ? pages : +page + 1}/10`}>
                     <button className={'product-card__add-btn'} onClick={handleIncrement}>{'>'}</button>

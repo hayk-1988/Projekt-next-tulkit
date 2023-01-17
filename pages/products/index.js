@@ -1,4 +1,6 @@
 
+// export {default} from './[...id]'
+
 import Link from "next/link";
 import {Product} from "../../components/populiar-product/Product";
 import {useDispatch, useSelector} from "react-redux";

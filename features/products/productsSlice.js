@@ -1,6 +1,4 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {myAxios} from "../../utils/request";
-import {productAdapter} from "../../utils/adaptors";
 import {getProductsReq} from "./api";
 
 

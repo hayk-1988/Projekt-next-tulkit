@@ -15,5 +15,5 @@ export async function getFilterProductsReq(categoryId, page, limit, minMax){
         method: 'get',
         url: `https://420.canamaster.net/api/v1/products/category/new/${categoryId}/${page}/${limit}?filterIds=[]&&attributeIds=[]&&productIds=[]&&parentCategoryId=23&&priceMinMax=[${minMax}]&&brandIds=[]`,
     };
-    return  await axios(config).data()
+    return  await axios(config).data
 }

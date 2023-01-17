@@ -118,7 +118,7 @@
     height: 4rem;
     background: #80d7a6;
     border-radius: 50%;
-    z-index: 100;
+    z-index: 5;
 }
 
 .btn-slider:hover {
@@ -129,12 +129,12 @@
 .btn--left {
     top: 50%;
     left: 0;
-    transform: translate(-50%, -50%);
+    transform: translate(-30%, -50%);
 }
 .btn--right {
     top: 50%;
     right: 0;
-    transform: translate(50%, -50%);
+    transform: translate(30%, -50%);
 }
 
 .inner-slider {

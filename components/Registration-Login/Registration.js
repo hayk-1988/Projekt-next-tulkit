@@ -1,11 +1,12 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {RegHeader} from "./RegHeader";
 import {registrationReq} from "../../utils/request";
 import s from './RegLog.module.css'
+import {useRouter} from "next/router";
 
 export function Registration() {
 
-
+    const router = useRouter()
     const [check, setCheck] = useState(false)
 
     const [password, setPassword] = useState('')
@@ -74,12 +75,17 @@ export function Registration() {
                 display: 'hide',
                 text: ''
             })
-            await registrationReq(data, setViz)
+            const res = await registrationReq(data, setViz)
+            console.log(res, 'registratia')
         }
 
     }
 
-
+    useEffect(() => {
+        if (localStorage.getItem('token')) {
+            router.push('/login')
+        }
+    }, [])
     return (
         <div>
             <div className={s['registration-page']}>

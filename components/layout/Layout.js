@@ -6,15 +6,16 @@ import {Footer} from "./Footer";
 import {Provider} from "react-redux";
 import store from '../../store/store'
 import MobileHeader from "./MobileHeader";
-
+import s from './Header.module.css'
 
 export function Layout({children}) {
 
     return( <Provider store={store}>
         <div className='general'>
             <MobileHeader/>
-            <div className="header">
-               <HeaderTop/>
+            <HeaderTop/>
+            <div className={s['header']}>
+
                <HeaderMidl/>
                <HeaderNav/>
            </div>

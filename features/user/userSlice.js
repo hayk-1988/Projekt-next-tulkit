@@ -17,7 +17,7 @@ export const userSlice = createSlice({
             state.email = action.payload
         },
         setLastName(state, action) {
-            state.lasName = action.payload
+            state.lastName = action.payload
         }
     }
 
